@@ -5,7 +5,7 @@ import UserPanel from '../../components/UserPanel';
 import Main from '../../components/Main';
 
 import SalesReport from '../../components/SalesReport';
-
+import ProfitReport from '../../components/ProfitReport';
 import TopSellers from '../../components/TopSellers';
 import TopCustomers from '../../components/TopCustomers';
 
@@ -45,7 +45,7 @@ const Dashboard = () => {
               <SalesReport starts={starts} finishes={finishes} />
             </div>
             <div className="col">
-              Lucro no período
+              <ProfitReport starts={starts} finishes={finishes} />
             </div>
           </div>
           <div className="row">
