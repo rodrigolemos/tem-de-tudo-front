@@ -37,6 +37,24 @@ export default createGlobalStyle`
     }
   }
 
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #AAA; 
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #888; 
+  }
+
   .global-container {
     display: flex;
     justify-content: center;
@@ -50,7 +68,7 @@ export default createGlobalStyle`
   }
 
   .custom-table {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     width: 100%;
     border-spacing: 0;
     border-collapse: collapse;
@@ -69,6 +87,7 @@ export default createGlobalStyle`
 
       &:hover {
         background-color: var(--font-secondary);
+        transform: translateX(5px);
       }
 
       td {
