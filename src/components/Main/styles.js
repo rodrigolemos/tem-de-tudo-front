@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.main`
   height: 90vh;
-  width: 50vw;
+  width: 60vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,7 +22,7 @@ export const Container = styled.main`
 
 export const ContentContainer = styled.div`
   height: auto;
-  width: 60%;
+  width: 90%;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -38,4 +38,6 @@ export const Content = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+  font-size: 1.6rem;
+  overflow: auto;
 `;

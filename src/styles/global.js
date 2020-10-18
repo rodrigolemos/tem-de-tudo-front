@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { darken } from 'polished';
 
-const colors = {
+export const colors = {
   bgPrimary: '#46A0E3',
   fontPrimary: '#2480C1',
   fontSecondary: '#EEE',
