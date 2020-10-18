@@ -2,8 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 import { darken } from 'polished';
 
 const colors = {
-  bgApp: '#DFE3EF',
-  bgPrimary: '#34387C',
+  bgPrimary: '#46A0E3',
   fontPrimary: '#EEE',
   warning: '#23276B',
   error: '#DE3E44',
@@ -30,6 +29,7 @@ export default createGlobalStyle`
     height: 100vh;
     width: 100vw;
     overflow: hidden;
+    background-color: #DDD;
     
     a, a:active {
       text-decoration: none;
@@ -44,8 +44,6 @@ export default createGlobalStyle`
   }
 
   :root {
-    --bg-app: ${colors.bgApp};
-    --bg-app-dark: ${darken(0.04, colors.bgApp)};
     --bg-primary: ${colors.bgPrimary};
     --bg-primary-dark: ${darken(0.09, colors.bgPrimary)};
     --font-primary: ${colors.fontPrimary};
