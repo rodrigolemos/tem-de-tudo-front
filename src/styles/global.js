@@ -30,7 +30,7 @@ export default createGlobalStyle`
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-    background-color: #DDD;
+    background-color: #DCD9E2;
     
     a, a:active {
       text-decoration: none;
@@ -42,6 +42,7 @@ export default createGlobalStyle`
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    box-shadow: 0px 0px 15px #CBC8D1;
   }
 
   :root {

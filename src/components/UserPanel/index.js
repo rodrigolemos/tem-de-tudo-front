@@ -14,13 +14,13 @@ const UserPanel = () => {
       <ControlPanel>
         <ul>
           <li>
-            <Link to="/sales">Vendas</Link>
-          </li>
-          <li>
-            <Link to="/partners">Parceiros</Link>
+            <Link to="/">Vendas</Link>
           </li>
           <li>
             <Link to="/products">Produtos</Link>
+          </li>
+          <li>
+            <Link to="/partners">Parceiros</Link>
           </li>
         </ul>
       </ControlPanel>

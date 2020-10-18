@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const UserDashboard = () => {
+  
+  useEffect(() => {
+    // ...
+  }, []);
+
   return (
     <div>
       <h1>User Dashboard</h1>
