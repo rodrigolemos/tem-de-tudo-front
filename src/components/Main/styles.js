@@ -9,7 +9,7 @@ export const Container = styled.main`
   position: relative;
 
   background: #FFF;
-  color: #34387C;
+  color: var(--font-primary);
 
   @media only screen and (max-width: 960px)  {
     width: 75vw;

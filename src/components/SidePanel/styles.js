@@ -8,7 +8,7 @@ export const Container = styled.aside`
   align-items: flex-start;
   flex-direction: column;
   background: var(--bg-primary);
-  color: var(--font-primary);
+  color: var(--font-secondary);
   position: relative;
 
   @media only screen and (max-width: 1070px) {

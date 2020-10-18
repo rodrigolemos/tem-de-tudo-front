@@ -59,7 +59,7 @@ export const ControlPanel = styled.div`
 
     a {
       text-decoration: none;
-      color: var(--font-primary);
+      color: var(--font-secondary);
     }
   }
 

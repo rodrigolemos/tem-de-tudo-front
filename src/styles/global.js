@@ -3,7 +3,8 @@ import { darken } from 'polished';
 
 const colors = {
   bgPrimary: '#46A0E3',
-  fontPrimary: '#EEE',
+  fontPrimary: '#2480C1',
+  fontSecondary: '#EEE',
   warning: '#23276B',
   error: '#DE3E44',
   success: '#1BA345'
@@ -48,6 +49,8 @@ export default createGlobalStyle`
     --bg-primary-dark: ${darken(0.09, colors.bgPrimary)};
     --font-primary: ${colors.fontPrimary};
     --font-primary-dark: ${darken(0.3, colors.fontPrimary)};
+    --font-secondary: ${colors.fontSecondary};
+    --font-secondary-dark: ${darken(0.3, colors.fontSecondary)};
     --warning: ${colors.warning};
     --error: ${colors.error};
     --success: ${colors.success};
