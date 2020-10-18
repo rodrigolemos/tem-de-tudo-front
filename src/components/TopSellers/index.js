@@ -5,22 +5,26 @@ import Loading from '../../components/Loading';
 import { api } from '../../services/api';
 import formatValue from '../../utils/formatValue';
 
-const TopSellers = () => {
+const TopSellers = ({ starts, finishes }) => {
   
   const [loading, setLoading] = useState(false);
   const [topSellers, setTopSellers] = useState([]);
 
   useEffect(() => {
-    fetchTopSellers();
-  }, []);
 
-  const fetchTopSellers = async () => {
+    if (starts && finishes) {
+      fetchTopSellers(starts, finishes);
+    }
+
+  }, [finishes, starts]);
+
+  const fetchTopSellers = async (starts, finishes) => {
 
     setLoading(true);
 
     try {
 
-      const response = await api.get('/sales/top-sellers?starts=2020-03-01&finishes=2020-03-29');
+      const response = await api.get(`/sales/top-sellers?starts=${starts}&finishes=${finishes}`);
 
       if (response.status === 200) {
         setTopSellers(response.data);

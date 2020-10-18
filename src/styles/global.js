@@ -75,6 +75,7 @@ export default createGlobalStyle`
     overflow: scroll;
     white-space: nowrap;
     cursor: default;
+    border: 1px solid var(--font-secondary);
 
     thead tr th {
       background-color: var(--font-primary);

@@ -5,22 +5,26 @@ import Loading from '../../components/Loading';
 import { api } from '../../services/api';
 import formatValue from '../../utils/formatValue';
 
-const TopCustomers = () => {
+const TopCustomers = ({ starts, finishes }) => {
   
   const [loading, setLoading] = useState(false);
   const [topCustommers, setTopCustomers] = useState([]);
 
   useEffect(() => {
-    fetchTopCustomers();
-  }, []);
 
-  const fetchTopCustomers = async () => {
+    if (starts && finishes) {
+      fetchTopCustomers(starts, finishes);
+    }
+
+  }, [starts, finishes]);
+
+  const fetchTopCustomers = async (starts, finishes) => {
 
     setLoading(true);
 
     try {
 
-      const response = await api.get('/sales/top-customers?starts=2020-03-01&finishes=2020-03-29');
+      const response = await api.get(`/sales/top-customers?starts=${starts}&finishes=${finishes}`);
 
       if (response.status === 200) {
         setTopCustomers(response.data);

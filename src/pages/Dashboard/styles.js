@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 
 export const Filter = styled.div`
-  margin-top: 2.5rem;
   width: 100%;
-  background-color: #DDD;
-  padding: 2rem 0;
+  padding: 1rem 0;
   
   display: flex;
   justify-content: space-around;
   align-items: center;
+
+  input[type="date"] {
+    margin-left: 10px;
+  }
 `;
 
 export const ReportsArea = styled.div`
@@ -34,7 +36,7 @@ export const ReportsArea = styled.div`
     width: 50%;
     height: 100%;
     margin: 5px;
-    overflow: scroll;
+    overflow: auto;
     flex-direction: column;
     
     /* background-color: #DDD; */
