@@ -5,6 +5,7 @@ import UserPanel from '../../components/UserPanel';
 import Main from '../../components/Main';
 
 import TopSellers from '../../components/TopSellers';
+import TopCustomers from '../../components/TopCustomers';
 
 import { Filter, ReportsArea } from './style';
 
@@ -29,7 +30,7 @@ const Dashboard = () => {
               <TopSellers />
             </div>
             <div className="col">
-              Melhores clientes
+              <TopCustomers />
             </div>
           </div>
         </ReportsArea>
