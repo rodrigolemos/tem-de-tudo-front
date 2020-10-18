@@ -35,10 +35,11 @@ export const ReportsArea = styled.div`
     height: 100%;
     margin: 5px;
     overflow: scroll;
+    flex-direction: column;
     
-    background-color: #DDD;
+    /* background-color: #DDD; */
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 `;
