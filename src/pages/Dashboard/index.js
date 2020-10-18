@@ -4,6 +4,8 @@ import SidePanel from '../../components/SidePanel';
 import UserPanel from '../../components/UserPanel';
 import Main from '../../components/Main';
 
+import SalesReport from '../../components/SalesReport';
+
 import TopSellers from '../../components/TopSellers';
 import TopCustomers from '../../components/TopCustomers';
 
@@ -40,7 +42,7 @@ const Dashboard = () => {
         <ReportsArea>
           <div className="row">
             <div className="col">
-              Vendas no período
+              <SalesReport starts={starts} finishes={finishes} />
             </div>
             <div className="col">
               Lucro no período
