@@ -4,7 +4,6 @@ import SidePanel from '../../components/SidePanel';
 import UserPanel from '../../components/UserPanel';
 import Main from '../../components/Main';
 import Loading from '../../components/Loading';
-import ItemsTable from '../../components/ItemsTable';
 
 import { api } from '../../services/api';
 
@@ -45,10 +44,36 @@ const Partners = () => {
         <UserPanel />
       </SidePanel>
       <Main>
+        <h1 className="content-title">Parceiros</h1>
         {loading ? (
           <Loading />
         ) : (
-          <ItemsTable items={partners} />
+          partners.length > 0 ? (
+            <table className="custom-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nome</th>
+                  <th>Endereço</th>
+                  <th>Telefone</th>
+                  <th>Tipo</th>
+                </tr>
+              </thead>
+              <tbody>
+                {partners.map(partner => (
+                  <tr key={partner.id}>
+                    <td>{partner.id}</td>
+                    <td>{partner.name}</td>
+                    <td>{partner.address}</td>
+                    <td>{partner.phone}</td>
+                    <td>{partner.type}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <h2>Nenhum parceiro encontrado.</h2>
+          )
         )}
       </Main>
     </div>

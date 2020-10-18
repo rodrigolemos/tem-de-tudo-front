@@ -23,6 +23,7 @@ export const Container = styled.main`
 export const ContentContainer = styled.div`
   height: auto;
   width: 90%;
+  height: 100%;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -33,11 +34,12 @@ export const ContentContainer = styled.div`
 `;
 
 export const Content = styled.div`
-  height: 70%;
+  height: 90%;
   width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+  flex-direction: column;
   font-size: 1.6rem;
   overflow: auto;
 `;
