@@ -48,7 +48,7 @@ const SalesReport = ({ starts, finishes }) => {
       ) : (
         sales.length > 0 ? (
           <>
-            <h2>Vendas no período</h2>
+            <h2>Vendas por dia</h2>
             <table className="custom-table">
               <thead>
                 <tr>

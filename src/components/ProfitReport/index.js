@@ -48,12 +48,12 @@ const ProfitReport = ({ starts, finishes }) => {
       ) : (
         profit.length > 0 ? (
           <>
-            <h2>Vendas no período</h2>
+            <h2>Lucro por dia</h2>
             <table className="custom-table">
               <thead>
                 <tr>
                   <th>Data</th>
-                  <th>Total Vendido</th>
+                  <th>Lucro</th>
                 </tr>
               </thead>
               <tbody>
@@ -63,7 +63,7 @@ const ProfitReport = ({ starts, finishes }) => {
                       {formatDate(profit.date)}
                     </td>
                     <td className="center">
-                      {formatValue(profit.total)}
+                      {formatValue(profit.profit)}
                     </td>
                   </tr>
                 ))}
