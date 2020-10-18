@@ -45,3 +45,18 @@ export const ReportsArea = styled.div`
     align-items: flex-start;
   }
 `;
+
+export const SearchHelp = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: .4;
+
+  svg {
+    width: 40%;
+    height: 40%;
+  }
+`;
