@@ -22,8 +22,12 @@ const Dashboard = () => {
         </Filter>
         <ReportsArea>
           <div className="row">
-            <div className="col">Coluna 1</div>
-            <div className="col">Coluna 2</div>
+            <div className="col">
+              Vendas no período
+            </div>
+            <div className="col">
+              Lucro no período
+            </div>
           </div>
           <div className="row">
             <div className="col">

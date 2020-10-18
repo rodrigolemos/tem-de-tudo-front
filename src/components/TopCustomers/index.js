@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Loading from '../../components/Loading';
 
 import { api } from '../../services/api';
+import formatValue from '../../utils/formatValue';
 
 const TopCustomers = () => {
   
@@ -54,7 +55,9 @@ const TopCustomers = () => {
                 {topCustommers.map((customer, index) => (
                   <tr key={index}>
                     <td>{customer.name}</td>
-                    <td>{customer.total}</td>
+                    <td className="center">
+                      {formatValue(customer.total)}
+                    </td>
                   </tr>
                 ))}
               </tbody>

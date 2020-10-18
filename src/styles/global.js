@@ -84,6 +84,7 @@ export default createGlobalStyle`
 
     tbody tr {
       transition: all .1s ease-in-out;
+      border: 1px solid var(--font-secondary);
 
       &:hover {
         background-color: var(--font-secondary);
@@ -93,6 +94,10 @@ export default createGlobalStyle`
       td {
         padding: 15px 20px;
       }
+    }
+
+    .center {
+      text-align: center;
     }
   }
 

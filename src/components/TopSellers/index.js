@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Loading from '../../components/Loading';
 
 import { api } from '../../services/api';
+import formatValue from '../../utils/formatValue';
 
 const TopSellers = () => {
   
@@ -54,7 +55,9 @@ const TopSellers = () => {
                 {topSellers.map((seller, index) => (
                   <tr key={index}>
                     <td>{seller.name}</td>
-                    <td>{seller.total}</td>
+                    <td className="center">
+                      {formatValue(seller.total)}
+                    </td>
                   </tr>
                 ))}
               </tbody>

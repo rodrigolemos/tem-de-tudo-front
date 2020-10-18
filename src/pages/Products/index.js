@@ -6,6 +6,7 @@ import Main from '../../components/Main';
 import Loading from '../../components/Loading';
 
 import { api } from '../../services/api';
+import formatValue from '../../utils/formatValue';
 
 const Products = () => {
 
@@ -69,8 +70,8 @@ const Products = () => {
                     <td>{product.name}</td>
                     <td>{product.brand}</td>
                     <td>{product.provider}</td>
-                    <td>{product.cost_price}</td>
-                    <td>{product.sale_price}</td>
+                    <td>{formatValue(product.cost_price)}</td>
+                    <td>{formatValue(product.sale_price)}</td>
                     <td>{product.stock_quantity}</td>
                     <td>{product.store_quantity}</td>
                   </tr>
