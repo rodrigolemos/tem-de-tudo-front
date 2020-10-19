@@ -49,7 +49,10 @@ const SalesReport = ({ starts, finishes }) => {
       ) : (
         sales.length > 0 ? (
           <>
-            <h2>Vendas {calcArrayTotal(sales)}</h2>
+            <div className="report-title">
+              <span>Total Vendido </span>
+              <span className="badge">{calcArrayTotal(sales)}</span>
+            </div>
             <CustomChart title="Vendas por dia" info={sales} />
           </>
         ) : (

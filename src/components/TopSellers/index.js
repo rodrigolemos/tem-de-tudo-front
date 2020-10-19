@@ -61,7 +61,7 @@ const TopSellers = ({ starts, finishes }) => {
                   <tr key={index}>
                     <td>{seller.name}</td>
                     <td className="center">
-                      {formatValue(seller.total)}
+                      <span className="simple-badge">{formatValue(seller.total)}</span>
                     </td>
                   </tr>
                 ))}

@@ -49,7 +49,10 @@ const ProfitReport = ({ starts, finishes }) => {
       ) : (
         profit.length > 0 ? (
           <>
-            <h2>Lucro {calcArrayTotal(profit)}</h2>
+            <div className="report-title">
+              <span>Lucro Obtido </span>
+              <span className="badge">{calcArrayTotal(profit)}</span>
+            </div>
             <CustomChart title="Lucro por dia" info={profit} />
           </>
         ) : (

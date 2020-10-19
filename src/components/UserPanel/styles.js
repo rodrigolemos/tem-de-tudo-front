@@ -44,7 +44,7 @@ export const ControlPanel = styled.div`
   }
 
   li {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     font-weight: normal;
     list-style: none;
     padding: 1rem;

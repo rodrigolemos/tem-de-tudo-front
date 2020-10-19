@@ -39,12 +39,16 @@ const CustomChart = ({ title, info }) => {
         offsetY: -20,
         style: {
           fontSize: '12px',
+          fontFamily: 'Noto Sans TC',
           colors: ["#304758"]
         }
       },
       xaxis: {
         categories: axis,
-        position: 'top',
+        // position: 'top',
+        labels: {
+          show: false
+        },
         axisBorder: {
           show: false
         },
@@ -78,16 +82,16 @@ const CustomChart = ({ title, info }) => {
           show: false
         }
       },
-      title: {
-        text: title,
-        align: 'center',
-        style: {
-          color: '#444',
-          fontSize: '20px',
-          fontFamily: 'sans-serif',
-          fontWeight: 'normal'
-        }
-      }
+      // title: {
+      //   text: title,
+      //   align: 'center',
+      //   style: {
+      //     color: '#444',
+      //     fontSize: '20px',
+      //     fontFamily: 'sans-serif',
+      //     fontWeight: 'normal'
+      //   }
+      // }
     },
   };
 
