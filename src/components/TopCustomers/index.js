@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+import DataNotFound from '../../components/DataNotFound';
 import Loading from '../../components/Loading';
 
 import { api } from '../../services/api';
@@ -68,7 +69,9 @@ const TopCustomers = ({ starts, finishes }) => {
             </table>
           </>
         ) : (
-          <h2>Nenhum cliente encontrado.</h2>
+          <DataNotFound>
+            <h2>Nenhum cliente encontrado.</h2>
+          </DataNotFound>
         )
       )}
     </>

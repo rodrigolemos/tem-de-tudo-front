@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+import DataNotFound from '../../components/DataNotFound';
 import Loading from '../../components/Loading';
 
 import { api } from '../../services/api';
@@ -71,7 +72,9 @@ const SalesReport = ({ starts, finishes }) => {
             </table>
           </>
         ) : (
-          <h2>Nenhuma venda encontrada.</h2>
+          <DataNotFound>
+            <h2>Nenhuma venda encontrada.</h2>
+          </DataNotFound>
         )
       )}
     </>
