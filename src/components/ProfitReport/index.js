@@ -6,6 +6,7 @@ import Loading from '../../components/Loading';
 import { api } from '../../services/api';
 import formatValue from '../../utils/formatValue';
 import formatDate from '../../utils/formatDate';
+import calcArrayTotal from '../../utils/calcArrayTotal';
 
 const ProfitReport = ({ starts, finishes }) => {
   
@@ -49,7 +50,7 @@ const ProfitReport = ({ starts, finishes }) => {
       ) : (
         profit.length > 0 ? (
           <>
-            <h2>Lucro por dia</h2>
+            <h2>Lucro {calcArrayTotal(profit)}</h2>
             <table className="custom-table">
               <thead>
                 <tr>
@@ -64,7 +65,7 @@ const ProfitReport = ({ starts, finishes }) => {
                       {formatDate(profit.date)}
                     </td>
                     <td className="center">
-                      {formatValue(profit.profit)}
+                      {formatValue(profit.total)}
                     </td>
                   </tr>
                 ))}

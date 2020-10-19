@@ -6,6 +6,7 @@ import Loading from '../../components/Loading';
 import { api } from '../../services/api';
 import formatValue from '../../utils/formatValue';
 import formatDate from '../../utils/formatDate';
+import calcArrayTotal from '../../utils/calcArrayTotal';
 
 const SalesReport = ({ starts, finishes }) => {
   
@@ -49,7 +50,7 @@ const SalesReport = ({ starts, finishes }) => {
       ) : (
         sales.length > 0 ? (
           <>
-            <h2>Vendas por dia</h2>
+            <h2>Vendas {calcArrayTotal(sales)}</h2>
             <table className="custom-table">
               <thead>
                 <tr>
