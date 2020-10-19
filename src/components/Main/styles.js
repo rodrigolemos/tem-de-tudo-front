@@ -41,5 +41,5 @@ export const Content = styled.div`
   align-items: flex-start;
   flex-direction: column;
   font-size: 1.6rem;
-  overflow: auto;
+  overflow: hidden;
 `;

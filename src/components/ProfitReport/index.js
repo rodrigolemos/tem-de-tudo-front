@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
+import CustomChart from '../../components/CustomChart';
 import DataNotFound from '../../components/DataNotFound';
 import Loading from '../../components/Loading';
 
 import { api } from '../../services/api';
-import formatValue from '../../utils/formatValue';
-import formatDate from '../../utils/formatDate';
 import calcArrayTotal from '../../utils/calcArrayTotal';
 
 const ProfitReport = ({ starts, finishes }) => {
@@ -51,26 +50,7 @@ const ProfitReport = ({ starts, finishes }) => {
         profit.length > 0 ? (
           <>
             <h2>Lucro {calcArrayTotal(profit)}</h2>
-            <table className="custom-table">
-              <thead>
-                <tr>
-                  <th>Data</th>
-                  <th>Lucro</th>
-                </tr>
-              </thead>
-              <tbody>
-                {profit.map((profit, index) => (
-                  <tr key={index}>
-                    <td className="center">
-                      {formatDate(profit.date)}
-                    </td>
-                    <td className="center">
-                      {formatValue(profit.total)}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <CustomChart title="Lucro por dia" info={profit} />
           </>
         ) : (
           <DataNotFound>
