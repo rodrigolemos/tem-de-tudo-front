@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import SidePanel from '../../components/SidePanel';
 import UserPanel from '../../components/UserPanel';
 import Main from '../../components/Main';
+import DataNotFound from '../../components/DataNotFound';
 import Loading from '../../components/Loading';
 
 import { api } from '../../services/api';
@@ -79,7 +80,9 @@ const Products = () => {
               </tbody>
             </table>
           ) : (
-            <h2>Nenhum produto encontrado.</h2>
+            <DataNotFound>
+              <h2>Nenhum produto encontrado.</h2>
+            </DataNotFound>
           )
         )}
       </Main>
