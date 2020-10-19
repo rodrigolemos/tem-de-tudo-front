@@ -16,12 +16,22 @@ const Dashboard = () => {
 
   const [starts, setStarts] = useState();
   const [finishes, setFinishes] = useState();
+  const [fetch, setFetch] = useState(false);
 
   const setDateToFetch = e => {
+    setFetch(false);
     if (e.target.id === "starts") {
       setStarts(e.target.value);
     } else {
       setFinishes(e.target.value);
+    }
+  }
+
+  const fetchData = () => {
+    if (starts && finishes) {
+      setFetch(true);
+    } else {
+      alert('Preencha as datas corretamente.');
     }
   }
 
@@ -34,14 +44,15 @@ const Dashboard = () => {
         <h1 className="content-title">Vendas</h1>
         <Filter>
           <label>Data Início:
-            <input type="date" id="starts" onBlur={setDateToFetch}></input>
+            <input type="date" id="starts" onChange={setDateToFetch}></input>
           </label>
           <label>Data Fim:
-            <input type="date" id="finishes" onBlur={setDateToFetch}></input>
+            <input type="date" id="finishes" onChange={setDateToFetch}></input>
           </label>
+          <button type="button" onClick={fetchData}>Pesquisar</button>
         </Filter>
         <ReportsArea>
-          {!starts || !finishes ? (
+          {!fetch ? (
             <SearchHelp>
               <AiOutlineFileSearch className="bg-img" />
               <h1>Selecione uma data para consulta</h1>
