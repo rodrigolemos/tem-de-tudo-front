@@ -31,7 +31,7 @@ const Dashboard = () => {
         <UserPanel />
       </SidePanel>
       <Main>
-        <h1 className="content-title">Selecione um período para consulta</h1>
+        <h1 className="content-title">Vendas</h1>
         <Filter>
           <label>Data Início:
             <input type="date" id="starts" onBlur={setDateToFetch}></input>

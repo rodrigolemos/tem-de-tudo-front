@@ -72,8 +72,8 @@ const Products = () => {
                     <td>{product.provider}</td>
                     <td>{formatValue(product.cost_price)}</td>
                     <td>{formatValue(product.sale_price)}</td>
-                    <td>{product.stock_quantity}</td>
-                    <td>{product.store_quantity}</td>
+                    <td className="center">{product.stock_quantity}</td>
+                    <td className="center">{product.store_quantity}</td>
                   </tr>
                 ))}
               </tbody>

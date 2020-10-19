@@ -6,6 +6,7 @@ import Main from '../../components/Main';
 import Loading from '../../components/Loading';
 
 import { api } from '../../services/api';
+import formatPartner from '../../utils/formatParner';
 
 const Partners = () => {
 
@@ -65,8 +66,8 @@ const Partners = () => {
                     <td>{partner.id}</td>
                     <td>{partner.name}</td>
                     <td>{partner.address}</td>
-                    <td>{partner.phone}</td>
-                    <td>{partner.type}</td>
+                    <td className="center">{partner.phone}</td>
+                    <td className="center">{formatPartner(partner.type)}</td>
                   </tr>
                 ))}
               </tbody>
