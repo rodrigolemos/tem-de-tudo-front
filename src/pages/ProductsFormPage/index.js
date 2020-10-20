@@ -27,16 +27,16 @@ const ProductsFormPage = () => {
       stock_quantity: yup.number().positive().integer().required(),
       store_quantity: yup.number().positive().integer().required(),
     });
-    
+
     schema.validate(product).then(async () => {
-  
+
       await submitForm(product);
-  
+
     }).catch(err => {
-      
+
       alert('Preencha todos os campos corretamente.');
       console.log(err);
-      
+
     });
 
   }
@@ -44,7 +44,7 @@ const ProductsFormPage = () => {
   const submitForm = async (product) => {
 
     try {
-      
+
       const response = await api.post('/products/create', product);
 
       if (response.status === 200) {
@@ -77,6 +77,7 @@ const ProductsFormPage = () => {
         </div>
         <div className="form-wrapper">
           <form onSubmit={handleSubmit(validateForm)}>
+            <h2>Informações do Produto</h2>
             <input ref={register} type="text" name="name" placeholder="Nome" />
             <input ref={register} type="text" name="description" placeholder="Descrição" />
             <input ref={register} type="text" name="brand" placeholder="Marca" />

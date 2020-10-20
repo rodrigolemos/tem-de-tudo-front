@@ -195,14 +195,14 @@ export default createGlobalStyle`
     form {
       background-color: #FFF;
       width: 50%;
-      height: 100%;
+      height: auto;
 
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
 
-      input {
+      input, select {
         font-size: 1.6rem;
         width: 95%;
         margin: .7rem;
@@ -211,10 +211,21 @@ export default createGlobalStyle`
         border-radius: 5px;
         background-color: var(--font-secondary);
         border: 1px solid var(--font-secondary);
+        outline-color: var(--bg-primary);
+        transition: all .2s ease-in-out;
+
+        &:focus {
+          border: 1px solid var(--bg-primary);
+        }
 
         ::placeholder {
           color: var(--font-secondary-dark);
         }
+
+      }
+
+      select {
+        width: 98%;
       }
 
       button {
