@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { AiOutlineFileSearch } from 'react-icons/ai';
 
 import SidePanel from '../../components/SidePanel';
@@ -41,7 +42,10 @@ const Dashboard = () => {
         <UserPanel />
       </SidePanel>
       <Main>
-        <h1 className="content-title">Vendas</h1>
+        <div className="content-title">
+          <h1>Vendas</h1>
+          <Link to="/sales/add">Adicionar</Link>
+        </div>
         <Filter>
           <label>Data Início:
             <input type="date" id="starts" onChange={setDateToFetch} defaultValue={starts}></input>

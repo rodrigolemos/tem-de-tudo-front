@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const Filter = styled.div`
   width: 100%;
-  padding: 1rem 0;
+  padding: 2rem 0 .5rem 0;
+  border-top: 2px solid #EEE;
 
   display: flex;
   justify-content: space-around;
