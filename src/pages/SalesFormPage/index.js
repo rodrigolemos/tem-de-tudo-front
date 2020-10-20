@@ -85,9 +85,9 @@ const SalesFormPage = () => {
             <input ref={register} type="text" name="sale_price" placeholder="Valor unitário" />
 
             <h3>Produto 2</h3>
-            <input ref={register} type="text" name="product_id" placeholder="Código do produto" />
-            <input ref={register} type="text" name="quantity" placeholder="Quantidade" />
-            <input ref={register} type="text" name="sale_price" placeholder="Valor unitário" />
+            <input type="text" name="product_id_2" placeholder="Código do produto" />
+            <input type="text" name="quantity_2" placeholder="Quantidade" />
+            <input type="text" name="sale_price_2" placeholder="Valor unitário" />
             <button>Adicionar</button>
           </form>
         </div>
