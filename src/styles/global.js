@@ -12,7 +12,7 @@ export default createGlobalStyle`
   html {
     font-size: 10px;
   }
-  
+
   * {
     font-family: 'Noto Sans TC', sans-serif;
   }
@@ -21,7 +21,7 @@ export default createGlobalStyle`
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,7 +29,7 @@ export default createGlobalStyle`
     width: 100vw;
     overflow: hidden;
     background-color: #DCD9E2;
-    
+
     a, a:active {
       text-decoration: none;
     }
@@ -44,13 +44,13 @@ export default createGlobalStyle`
   ::-webkit-scrollbar-track {
     background: #F1F1F1;
   }
-  
+
   ::-webkit-scrollbar-thumb {
-    background: #CCC; 
+    background: #CCC;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #AAA; 
+    background: #AAA;
   }
 
   .global-container {

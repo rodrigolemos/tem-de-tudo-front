@@ -3,13 +3,34 @@ import styled from 'styled-components';
 export const Filter = styled.div`
   width: 100%;
   padding: 1rem 0;
-  
+
   display: flex;
   justify-content: space-around;
   align-items: center;
 
+  label {
+    margin-right: 2rem;
+  }
+
   input[type="date"] {
-    margin-left: 10px;
+    width: auto;
+    font-size: 1.6rem;
+    margin: .7rem;
+    padding: .75rem 1rem;
+    color: #555;
+    border-radius: 5px;
+    background-color: var(--font-secondary);
+    border: 1px solid var(--font-secondary);
+    outline-color: var(--bg-primary);
+    transition: all .2s ease-in-out;
+
+    &:focus {
+      border: 1px solid var(--bg-primary);
+    }
+
+    ::placeholder {
+      color: var(--font-secondary-dark);
+    }
   }
 `;
 
@@ -17,7 +38,7 @@ export const ReportsArea = styled.div`
   height: 100%;
   width: 100%;
   padding: 2rem 0;
-  
+
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -38,8 +59,7 @@ export const ReportsArea = styled.div`
     margin: 5px;
     overflow: auto;
     flex-direction: column;
-    
-    /* background-color: #DDD; */
+
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
