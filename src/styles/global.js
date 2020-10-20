@@ -183,6 +183,62 @@ export default createGlobalStyle`
     }
   }
 
+  .form-wrapper {
+    width: 100%;
+    height: 85%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    form {
+      background-color: #FFF;
+      width: 50%;
+      height: 100%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      input {
+        font-size: 1.6rem;
+        width: 95%;
+        margin: .7rem;
+        padding: .75rem;
+        color: #333;
+        border-radius: 5px;
+        background-color: var(--font-secondary);
+        border: 1px solid var(--font-secondary);
+
+        ::placeholder {
+          color: var(--font-secondary-dark);
+        }
+      }
+
+      button {
+        font-size: 1.6rem;
+        margin-top: 1.5rem;
+        width: 99%;
+        padding: .75rem;
+        border-radius: .2rem;
+        cursor: pointer;
+        border: none;
+        color: #FFF;
+        outline-color: var(--bg-secondary);
+        background-color: var(--bg-primary-dark);
+        transition: all .1s ease-in-out;
+
+        &:hover {
+          transform: translateY(-0.2rem);
+          box-shadow: 2px 2px 5px #CBC8D1;
+        }
+
+      }
+    }
+  }
+
   :root {
     --bg-primary: ${colors.bgPrimary};
     --bg-primary-dark: ${darken(0.09, colors.bgPrimary)};
