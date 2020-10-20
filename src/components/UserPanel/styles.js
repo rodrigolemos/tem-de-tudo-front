@@ -54,7 +54,7 @@ export const ControlPanel = styled.div`
     cursor: pointer;
 
     &:hover {
-      background: var(--bg-primary-dark);
+      background-image: linear-gradient(to right, var(--bg-primary-dark), rgba(255, 0, 0, 0));
     }
 
     a {
