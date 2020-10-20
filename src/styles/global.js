@@ -42,15 +42,15 @@ export default createGlobalStyle`
   }
 
   ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #F1F1F1;
   }
   
   ::-webkit-scrollbar-thumb {
-    background: #AAA; 
+    background: #CCC; 
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #888; 
+    background: #AAA; 
   }
 
   .global-container {
@@ -62,7 +62,33 @@ export default createGlobalStyle`
   }
 
   .content-title {
-    font-size: 2.6rem;
+    padding: .5rem 0 .5rem .5rem;
+    border-radius: 5px;
+
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h1 {
+      font-size: 2.6rem;
+    }
+
+    a {
+      padding: .7rem 1.5rem;
+      border-radius: .2rem;
+      cursor: pointer;
+      border: none;
+      color: #FFF;
+      outline-color: var(--bg-secondary);
+      background-color: var(--bg-secondary-dark);
+      transition: all .1s ease-in-out;
+
+      &:hover {
+        transform: translateY(-0.2rem);
+        box-shadow: 2px 2px 5px #CBC8D1;
+      }
+    }
   }
 
   .report-title {
@@ -97,6 +123,22 @@ export default createGlobalStyle`
     border: 2px solid var(--bg-secondary);
     color: var(--bg-secondary-dark);
     font-weight: bold;
+    transition: all .1s ease-in-out;
+
+    &:hover {
+      transform: translateY(-0.2rem);
+      box-shadow: 2px 2px 5px #CBC8D1;
+    }
+  }
+
+  .btn-primary {
+    padding: .7rem 1.5rem;
+    border-radius: .2rem;
+    cursor: pointer;
+    border: none;
+    color: #FFF;
+    outline-color: var(--bg-secondary);
+    background-color: var(--bg-primary-dark);
     transition: all .1s ease-in-out;
 
     &:hover {

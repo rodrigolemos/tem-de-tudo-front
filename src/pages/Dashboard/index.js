@@ -14,8 +14,8 @@ import { Filter, ReportsArea, SearchHelp } from './styles';
 
 const Dashboard = () => {
 
-  const [starts, setStarts] = useState();
-  const [finishes, setFinishes] = useState();
+  const [starts, setStarts] = useState('2020-03-01');
+  const [finishes, setFinishes] = useState('2020-03-31');
   const [fetch, setFetch] = useState(false);
 
   const setDateToFetch = e => {
@@ -44,12 +44,12 @@ const Dashboard = () => {
         <h1 className="content-title">Vendas</h1>
         <Filter>
           <label>Data Início:
-            <input type="date" id="starts" onChange={setDateToFetch}></input>
+            <input type="date" id="starts" onChange={setDateToFetch} defaultValue={starts}></input>
           </label>
           <label>Data Fim:
-            <input type="date" id="finishes" onChange={setDateToFetch}></input>
+            <input type="date" id="finishes" onChange={setDateToFetch} defaultValue={finishes}></input>
           </label>
-          <button type="button" onClick={fetchData}>Pesquisar</button>
+          <button type="button" className="btn-primary" onClick={fetchData}>Pesquisar</button>
         </Filter>
         <ReportsArea>
           {!fetch ? (

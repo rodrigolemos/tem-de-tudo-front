@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import SidePanel from '../../components/SidePanel';
 import UserPanel from '../../components/UserPanel';
@@ -46,7 +47,10 @@ const Products = () => {
         <UserPanel />
       </SidePanel>
       <Main>
-        <h1 className="content-title">Produtos</h1>
+        <div className="content-title">
+          <h1>Produtos</h1>
+          <Link to="/products/add">Adicionar</Link>
+        </div>
         {loading ? (
           <Loading />
         ) : (

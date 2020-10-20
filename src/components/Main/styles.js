@@ -7,6 +7,7 @@ export const Container = styled.main`
   justify-content: center;
   align-items: center;
   position: relative;
+  overflow-y: auto;
 
   background: #FFF;
   color: var(--font-primary);
@@ -41,5 +42,4 @@ export const Content = styled.div`
   align-items: flex-start;
   flex-direction: column;
   font-size: 1.6rem;
-  overflow: hidden;
 `;
