@@ -26,6 +26,7 @@ const ProductsFormPage = () => {
       sale_price: yup.number().positive().required(),
       stock_quantity: yup.number().positive().integer().required(),
       store_quantity: yup.number().positive().integer().required(),
+      status: yup.string().required(),
     });
 
     schema.validate(product).then(async () => {
@@ -87,6 +88,11 @@ const ProductsFormPage = () => {
             <input ref={register} type="text" name="sale_price" placeholder="Preço de Venda" />
             <input ref={register} type="text" name="stock_quantity" placeholder="Quantidade em Estoque" />
             <input ref={register} type="text" name="store_quantity" placeholder="Quantidade em Loja" />
+            <select ref={register} name="status">
+              <option value="">Selecione</option>
+              <option value="A">Ativo</option>
+              <option value="I">Suspenso</option>
+            </select>
             <button>Adicionar</button>
           </form>
         </div>

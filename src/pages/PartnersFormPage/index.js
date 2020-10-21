@@ -21,6 +21,7 @@ const PartnersFormPage = () => {
       address: yup.string().required(),
       phone: yup.string().required(),
       type: yup.string().required(),
+      status: yup.string().required(),
     });
 
     schema.validate(partner).then(async () => {
@@ -48,13 +49,13 @@ const PartnersFormPage = () => {
 
       } else {
 
-        alert('Não foi possível adicionar o produto. Tente novamente mais tarde.');
+        alert('Não foi possível adicionar o parceiro. Tente novamente mais tarde.');
 
       }
 
     } catch (err) {
 
-      alert('Não foi possível adicionar o produto. Tente novamente mais tarde.');
+      alert('Não foi possível adicionar o parceiro. Tente novamente mais tarde.');
 
     }
 
@@ -80,6 +81,11 @@ const PartnersFormPage = () => {
               <option value="">Selecione</option>
               <option value="customer">Cliente</option>
               <option value="seller">Vendedor</option>
+            </select>
+            <select ref={register} name="status">
+              <option value="">Selecione</option>
+              <option value="A">Ativo</option>
+              <option value="I">Suspenso</option>
             </select>
             <button>Adicionar</button>
           </form>
