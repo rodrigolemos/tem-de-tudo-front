@@ -80,7 +80,7 @@ const Products = () => {
       </SidePanel>
       <Main>
         <div className="content-title">
-          <h1>Produtos ativos</h1>
+          <h1>Produtos</h1>
           <Link to="/products/add">Adicionar</Link>
         </div>
         {loading ? (
