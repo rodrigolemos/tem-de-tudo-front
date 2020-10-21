@@ -6,6 +6,7 @@ import * as yup from 'yup';
 import SidePanel from '../../components/SidePanel';
 import UserPanel from '../../components/UserPanel';
 import Main from '../../components/Main';
+import SelectAPI from '../../components/SelectAPI';
 
 import { api } from '../../services/api';
 
@@ -76,16 +77,16 @@ const SalesFormPage = () => {
           <h2>Informações da Venda</h2>
           <form onSubmit={handleSubmit(validateForm)}>
             <input ref={register} type="text" name="order" placeholder="Número do pedido" />
-            <input ref={register} type="text" name="customer" placeholder="Cliente" />
-            <input ref={register} type="text" name="seller" placeholder="Vendedor" />
+            <SelectAPI forwardRef={register} type="text" apiName="partners" name="customer" filterType="customer" placeholder="Cliente" />
+            <SelectAPI forwardRef={register} type="text" apiName="partners" name="seller" filterType="seller" placeholder="Vendedor" />
 
             <h3>Produto 1</h3>
-            <input ref={register} type="text" name="product_id" placeholder="Código do produto" />
+            <SelectAPI forwardRef={register} type="text" apiName="products" name="product" placeholder="Produto" />
             <input ref={register} type="text" name="quantity" placeholder="Quantidade" />
             <input ref={register} type="text" name="sale_price" placeholder="Valor unitário" />
 
             <h3>Produto 2</h3>
-            <input type="text" name="product_id_2" placeholder="Código do produto" />
+            <SelectAPI forwardRef={register} type="text" apiName="products" name="product_2" placeholder="Produto" />
             <input type="text" name="quantity_2" placeholder="Quantidade" />
             <input type="text" name="sale_price_2" placeholder="Valor unitário" />
             <button>Adicionar</button>
