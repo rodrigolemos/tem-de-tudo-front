@@ -15,8 +15,10 @@ import { Filter, ReportsArea, SearchHelp } from './styles';
 
 const Dashboard = () => {
 
-  const [starts, setStarts] = useState('2020-03-01');
-  const [finishes, setFinishes] = useState('2020-03-31');
+  const setToday = () => new Date().toISOString().substr(0, 10);
+
+  const [starts, setStarts] = useState(setToday());
+  const [finishes, setFinishes] = useState(setToday());
   const [fetch, setFetch] = useState(false);
 
   const setDateToFetch = e => {
