@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { IoIosRemoveCircleOutline } from 'react-icons/io';
 
 import SidePanel from '../../components/SidePanel';
 import UserPanel from '../../components/UserPanel';
@@ -13,7 +14,7 @@ import formatValue from '../../utils/formatValue';
 const Products = () => {
 
   const [loading, setLoading] = useState(false);
-  const [products, setproducts] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     fetchProducts();
@@ -28,7 +29,7 @@ const Products = () => {
       const response = await api.get('/products/list');
 
       if (response.status === 200) {
-        setproducts(response.data);
+        setProducts(response.data);
       }
 
     } catch (err) {
@@ -41,6 +42,37 @@ const Products = () => {
 
   }
 
+  const removeProduct = async (id) => {
+
+    if (window.confirm('Deseja realmente remover o produto?')) {
+      
+      setLoading(true);
+
+      try {
+
+        // put
+        const response = await api.get(`/products/remove/${id}`);
+
+        if (response.status === 200) {
+
+          setProducts(...[products.filter(product => product.id !== id)]);
+
+          alert('Produto removido!');
+
+        }
+
+      } catch (err) {
+
+        console.log(err);
+
+      }
+
+      setLoading(false);
+
+    }
+
+  }
+
   return (
     <div className="global-container">
       <SidePanel>
@@ -48,7 +80,7 @@ const Products = () => {
       </SidePanel>
       <Main>
         <div className="content-title">
-          <h1>Produtos</h1>
+          <h1>Produtos ativos</h1>
           <Link to="/products/add">Adicionar</Link>
         </div>
         {loading ? (
@@ -58,6 +90,7 @@ const Products = () => {
             <table className="custom-table">
               <thead>
                 <tr>
+                  <th></th>
                   <th>ID</th>
                   <th>Nome</th>
                   <th>Marca</th>
@@ -71,12 +104,19 @@ const Products = () => {
               <tbody>
                 {products.map(product => (
                   <tr key={product.id}>
-                    <td>{product.id}</td>
-                    <td>{product.name}</td>
-                    <td>{product.brand}</td>
-                    <td>{product.provider}</td>
-                    <td>{formatValue(product.cost_price)}</td>
-                    <td>{formatValue(product.sale_price)}</td>
+                    <td className="center">
+                      <IoIosRemoveCircleOutline
+                        title="Remover produto"
+                        className="icon-remove"
+                        onClick={() => removeProduct(product.id)}
+                      />
+                    </td>
+                    <td className="center">{product.id}</td>
+                    <td className="center">{product.name}</td>
+                    <td className="center">{product.brand}</td>
+                    <td className="center">{product.provider}</td>
+                    <td className="center">{formatValue(product.cost_price)}</td>
+                    <td className="center">{formatValue(product.sale_price)}</td>
                     <td className="center">{product.stock_quantity}</td>
                     <td className="center">{product.store_quantity}</td>
                   </tr>

@@ -181,6 +181,11 @@ export default createGlobalStyle`
     .center {
       text-align: center;
     }
+
+    .icon-remove {
+      cursor: pointer;
+      color: #DE3E44;
+    }
   }
 
   .form-wrapper {
