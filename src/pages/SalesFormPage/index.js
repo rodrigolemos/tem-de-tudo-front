@@ -19,11 +19,12 @@ const SalesFormPage = () => {
 
     const schema = yup.object().shape({
       order: yup.number().positive().integer().required(),
-      customer: yup.number().positive().integer().required(),
-      seller: yup.number().positive().integer().required(),
-      product_id: yup.number().positive().integer().required(),
+      customer: yup.string().required(),
+      seller: yup.string().required(),
+      product: yup.string().required(),
       quantity: yup.number().positive().integer().required(),
-      sale_price: yup.number().positive().required()
+      product_2: yup.string(),
+      quantity_2: yup.number().integer()
     });
 
     schema.validate(sale).then(async () => {
@@ -41,9 +42,51 @@ const SalesFormPage = () => {
 
   const submitForm = async (sale) => {
 
+    const date = new Date().toISOString().substr(0, 10);
+
+    const formatedSale = [
+      {
+        "order": sale.order,
+        "product_id": sale.product,
+        "quantity": sale.quantity,
+        "customer": {
+          "id": sale.customer
+        },
+        "seller": {
+          "id": sale.seller
+        },
+        "date": date
+      }
+    ];
+
+    if (sale.product_2 && sale.quantity_2 > 0) {
+
+      if (sale.product === sale.product_2) {
+        alert('Selecione um produto diferente do outro.');
+        return;
+      }
+
+      formatedSale.push(
+        {
+          "order": sale.order,
+          "product_id": sale.product_2,
+          "quantity": sale.quantity_2,
+          "customer": {
+            "id": sale.customer
+          },
+          "seller": {
+            "id": sale.seller
+          },
+          "date": date
+        }
+      );
+    }
+
     try {
 
-      const response = await api.post('/sales/create', sale);
+      const response = await api.post('/sales/create', formatedSale);
+
+      console.log(response);
 
       if (response.status === 200) {
 
@@ -82,13 +125,12 @@ const SalesFormPage = () => {
 
             <h3>Produto 1</h3>
             <SelectAPI forwardRef={register} type="text" apiName="products" name="product" placeholder="Produto" />
-            <input ref={register} type="text" name="quantity" placeholder="Quantidade" />
-            <input ref={register} type="text" name="sale_price" placeholder="Valor unitário" />
+            <input ref={register} type="number" name="quantity" placeholder="Quantidade" min={1} defaultValue={1}/>
 
             <h3>Produto 2</h3>
             <SelectAPI forwardRef={register} type="text" apiName="products" name="product_2" placeholder="Produto" />
-            <input type="text" name="quantity_2" placeholder="Quantidade" />
-            <input type="text" name="sale_price_2" placeholder="Valor unitário" />
+            <input ref={register} type="number" name="quantity_2" placeholder="Quantidade" min={0} defaultValue={0} />
+
             <button>Adicionar</button>
           </form>
         </div>
