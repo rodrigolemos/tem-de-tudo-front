@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { IoIosRemoveCircleOutline } from 'react-icons/io';
 
 import SidePanel from '../../components/SidePanel';
 import UserPanel from '../../components/UserPanel';
@@ -41,6 +42,37 @@ const Partners = () => {
 
   }
 
+  const removePartner = async (id) => {
+
+    if (window.confirm('Deseja realmente remover o parceiro?')) {
+      
+      setLoading(true);
+
+      try {
+
+        // put
+        const response = await api.get(`/partners/remove/${id}`);
+
+        if (response.status === 200) {
+
+          setPartners(...[partners.filter(partner => partner.id !== id)]);
+
+          alert('Parceiro removido!');
+
+        }
+
+      } catch (err) {
+
+        console.log(err);
+
+      }
+
+      setLoading(false);
+
+    }
+
+  }
+
   return (
     <div className="global-container">
       <SidePanel>
@@ -58,6 +90,7 @@ const Partners = () => {
             <table className="custom-table">
               <thead>
                 <tr>
+                  <th></th>
                   <th>ID</th>
                   <th>Nome</th>
                   <th>Endereço</th>
@@ -68,8 +101,15 @@ const Partners = () => {
               <tbody>
                 {partners.map(partner => (
                   <tr key={partner.id}>
-                    <td>{partner.id}</td>
-                    <td>{partner.name}</td>
+                    <td className="center">
+                      <IoIosRemoveCircleOutline
+                        title="Remover parceiro"
+                        className="icon-remove"
+                        onClick={() => removePartner(partner.id)}
+                      />
+                    </td>
+                    <td className="center">{partner.id}</td>
+                    <td className="center">{partner.name}</td>
                     <td>{partner.address}</td>
                     <td className="center">{partner.phone}</td>
                     <td className="center">{formatPartner(partner.type)}</td>
