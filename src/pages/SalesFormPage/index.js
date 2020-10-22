@@ -32,7 +32,7 @@ const SalesFormPage = () => {
       const response = await api.get('/sales/list');
 
       if (response.status === 200) {
-        
+
         const orders = response.data;
 
         if (orders.length > 0) {
@@ -111,7 +111,7 @@ const SalesFormPage = () => {
       if (sale.product === sale.product_2) {
         Swal.fire({
           title: 'Atenção!',
-          text: 'Selecione um produto diferente do outro.',
+          text: 'Selecione dois produtos diferentes do outro.',
           icon: 'error',
           confirmButtonText: 'Ok'
         });
