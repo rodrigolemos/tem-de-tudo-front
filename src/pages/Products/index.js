@@ -11,6 +11,7 @@ import Loading from '../../components/Loading';
 
 import { api } from '../../services/api';
 import formatValue from '../../utils/formatValue';
+import { colors } from '../../styles/global';
 
 const Products = () => {
 
@@ -50,8 +51,8 @@ const Products = () => {
       text: 'O histórico de vendas não será afetado',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
+      confirmButtonColor: colors.confirm,
+      cancelButtonColor: colors.cancel,
       confirmButtonText: 'Sim',
       cancelButtonText: 'Não'
     }).then(async (result) => {
