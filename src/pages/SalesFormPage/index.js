@@ -135,13 +135,19 @@ const SalesFormPage = () => {
       );
     }
 
+    setLoading(true);
+
     try {
 
       const response = await api.post('/sales/create', formatedSale);
 
       if (response.status === 200) {
 
+        setLoading(false);
+
         history.push('/');
+
+        return;
 
       } else {
 
@@ -168,6 +174,8 @@ const SalesFormPage = () => {
       console.log(err);
 
     }
+
+    setLoading(false);
 
   }
 

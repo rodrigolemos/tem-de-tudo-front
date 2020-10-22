@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -8,12 +8,14 @@ import SidePanel from '../../components/SidePanel';
 import UserPanel from '../../components/UserPanel';
 import Main from '../../components/Main';
 import CustomForm from '../../components/CustomForm';
+import Loading from '../../components/Loading';
 
 import { api } from '../../services/api';
 
 const PartnersFormPage = () => {
 
   const { register, handleSubmit } = useForm();
+  const [loading, setLoading] = useState(false);
   const history = useHistory();
 
   const validateForm = async (partner) => {
@@ -47,13 +49,19 @@ const PartnersFormPage = () => {
 
   const submitForm = async (partner) => {
 
+    setLoading(true);
+
     try {
 
       const response = await api.post('/partners/create', partner);
 
       if (response.status === 200) {
 
+        setLoading(false);
+
         history.push('/partners');
+
+        return;
 
       } else {
 
@@ -77,6 +85,8 @@ const PartnersFormPage = () => {
 
     }
 
+    setLoading(false);
+
   }
 
   return (
@@ -89,6 +99,9 @@ const PartnersFormPage = () => {
           <h1>Adicionar Parceiro</h1>
           <Link to="/partners">Voltar</Link>
         </div>
+        {loading ? (
+          <Loading />
+        ) : (
           <CustomForm onSubmit={handleSubmit(validateForm)}>
             <h2>Informações do Parceiro</h2>
             <input ref={register} type="text" name="name" placeholder="Nome do Parceiro" />
@@ -106,6 +119,7 @@ const PartnersFormPage = () => {
             </select>
             <button>Adicionar</button>
           </CustomForm>
+        )}
       </Main>
     </div>
   )

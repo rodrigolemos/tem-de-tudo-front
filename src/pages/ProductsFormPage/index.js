@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -8,12 +8,14 @@ import SidePanel from '../../components/SidePanel';
 import UserPanel from '../../components/UserPanel';
 import Main from '../../components/Main';
 import CustomForm from '../../components/CustomForm';
+import Loading from '../../components/Loading';
 
 import { api } from '../../services/api';
 
 const ProductsFormPage = () => {
 
   const { register, handleSubmit } = useForm();
+  const [loading, setLoading] = useState(false);
   const history = useHistory();
 
   const validateForm = async (product) => {
@@ -52,13 +54,19 @@ const ProductsFormPage = () => {
 
   const submitForm = async (product) => {
 
+    setLoading(true);
+
     try {
 
       const response = await api.post('/products/create', product);
 
       if (response.status === 200) {
 
+        setLoading(false);
+
         history.push('/products');
+
+        return;
 
       } else {
 
@@ -82,6 +90,8 @@ const ProductsFormPage = () => {
 
     }
 
+    setLoading(false);
+
   }
 
   return (
@@ -94,24 +104,28 @@ const ProductsFormPage = () => {
           <h1>Adicionar Produto</h1>
           <Link to="/products">Voltar</Link>
         </div>
-        <CustomForm onSubmit={handleSubmit(validateForm)}>
-          <h2>Informações do Produto</h2>
-          <input ref={register} type="text" name="name" placeholder="Nome" />
-          <input ref={register} type="text" name="description" placeholder="Descrição" />
-          <input ref={register} type="text" name="brand" placeholder="Marca" />
-          <input ref={register} type="text" name="provider" placeholder="Fornecedor" />
-          <input ref={register} type="text" name="classification" placeholder="Classificação" />
-          <input ref={register} type="text" name="cost_price" placeholder="Preço de Custo" />
-          <input ref={register} type="text" name="sale_price" placeholder="Preço de Venda" />
-          <input ref={register} type="text" name="stock_quantity" placeholder="Quantidade em Estoque" />
-          <input ref={register} type="text" name="store_quantity" placeholder="Quantidade em Loja" />
-          <select ref={register} name="status" defaultValue="">
-            <option value="" disabled>Selecione</option>
-            <option value="A">Ativo</option>
-            <option value="I">Suspenso</option>
-          </select>
-          <button>Adicionar</button>
-        </CustomForm>
+        {loading ? (
+          <Loading />
+        ) : (
+          <CustomForm onSubmit={handleSubmit(validateForm)}>
+            <h2>Informações do Produto</h2>
+            <input ref={register} type="text" name="name" placeholder="Nome" />
+            <input ref={register} type="text" name="description" placeholder="Descrição" />
+            <input ref={register} type="text" name="brand" placeholder="Marca" />
+            <input ref={register} type="text" name="provider" placeholder="Fornecedor" />
+            <input ref={register} type="text" name="classification" placeholder="Classificação" />
+            <input ref={register} type="text" name="cost_price" placeholder="Preço de Custo" />
+            <input ref={register} type="text" name="sale_price" placeholder="Preço de Venda" />
+            <input ref={register} type="text" name="stock_quantity" placeholder="Quantidade em Estoque" />
+            <input ref={register} type="text" name="store_quantity" placeholder="Quantidade em Loja" />
+            <select ref={register} name="status" defaultValue="">
+              <option value="" disabled>Selecione</option>
+              <option value="A">Ativo</option>
+              <option value="I">Suspenso</option>
+            </select>
+            <button>Adicionar</button>
+          </CustomForm>
+        )}
       </Main>
     </div>
   )
