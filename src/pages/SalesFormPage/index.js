@@ -12,6 +12,7 @@ import SelectAPI from '../../components/SelectAPI';
 import Loading from '../../components/Loading';
 
 import { api } from '../../services/api';
+import { colors } from '../../styles/global';
 
 const SalesFormPage = () => {
 
@@ -143,9 +144,19 @@ const SalesFormPage = () => {
 
       if (response.status === 200) {
 
-        setLoading(false);
+        Swal.fire({
+          title: 'Venda registrada!',
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonColor: colors.confirm,
+          confirmButtonText: 'Ok'
+        }).then(() => {
+        
+          setLoading(false);
 
-        history.push('/');
+          history.push('/');
+
+        });
 
         return;
 

@@ -11,6 +11,7 @@ import CustomForm from '../../components/CustomForm';
 import Loading from '../../components/Loading';
 
 import { api } from '../../services/api';
+import { colors } from '../../styles/global';
 
 const ProductsFormPage = () => {
 
@@ -62,9 +63,19 @@ const ProductsFormPage = () => {
 
       if (response.status === 200) {
 
-        setLoading(false);
+        Swal.fire({
+          title: 'Produto cadastrado!',
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonColor: colors.confirm,
+          confirmButtonText: 'Ok'
+        }).then(() => {
+        
+          setLoading(false);
 
-        history.push('/products');
+          history.push('/products');
+
+        });
 
         return;
 

@@ -11,6 +11,7 @@ import CustomForm from '../../components/CustomForm';
 import Loading from '../../components/Loading';
 
 import { api } from '../../services/api';
+import { colors } from '../../styles/global';
 
 const PartnersFormPage = () => {
 
@@ -57,9 +58,19 @@ const PartnersFormPage = () => {
 
       if (response.status === 200) {
 
-        setLoading(false);
+        Swal.fire({
+          title: 'Parceiro cadastrado!',
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonColor: colors.confirm,
+          confirmButtonText: 'Ok'
+        }).then(() => {
+        
+          setLoading(false);
 
-        history.push('/partners');
+          history.push('/partners');
+
+        });
 
         return;
 
