@@ -9,6 +9,10 @@ export const Filter = styled.div`
   justify-content: space-around;
   align-items: center;
 
+  @media only screen and (max-width: 726px) {
+    flex-direction: column;
+  }
+
   label {
     margin-right: 2rem;
   }
@@ -52,6 +56,10 @@ export const ReportsArea = styled.div`
 
     display: flex;
     align-items: center;
+
+    @media only screen and (max-width: 1070px) {
+      flex-direction: column;
+    }
   }
 
   .col {
@@ -64,6 +72,10 @@ export const ReportsArea = styled.div`
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+
+    @media only screen and (max-width: 1070px) {
+      width: 100%;
+    }
   }
 `;
 

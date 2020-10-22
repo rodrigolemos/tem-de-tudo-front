@@ -47,10 +47,10 @@ const Dashboard = () => {
           <Link to="/sales/add">Adicionar</Link>
         </div>
         <Filter>
-          <label>Data Início:
+          <label>De:
             <input type="date" id="starts" onChange={setDateToFetch} defaultValue={starts}></input>
           </label>
-          <label>Data Fim:
+          <label>Até:
             <input type="date" id="finishes" onChange={setDateToFetch} defaultValue={finishes}></input>
           </label>
           <button type="button" className="btn-primary" onClick={fetchData}>Pesquisar</button>
