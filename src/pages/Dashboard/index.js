@@ -60,7 +60,6 @@ const Dashboard = () => {
             <SearchHelp>
               <AiOutlineFileSearch className="bg-img" />
               <h1>Selecione uma data para consulta</h1>
-              <h3>Por exemplo, de 01/03/2020 à 31/03/2020</h3>
             </SearchHelp>
           ) : (
             <>
