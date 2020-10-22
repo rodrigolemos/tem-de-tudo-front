@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import SidePanel from '../../components/SidePanel';
 import UserPanel from '../../components/UserPanel';
 import Main from '../../components/Main';
+import CustomForm from '../../components/CustomForm';
 import SelectAPI from '../../components/SelectAPI';
 import Loading from '../../components/Loading';
 
@@ -183,23 +184,21 @@ const SalesFormPage = () => {
         {loading ? (
           <Loading />
         ) : (
-          <div className="form-wrapper">
+          <CustomForm onSubmit={handleSubmit(validateForm)}>
             <h2>Informações de Venda</h2>
-            <form onSubmit={handleSubmit(validateForm)}>
-              <SelectAPI forwardRef={register} type="text" apiName="partners" name="customer" filterType="customer" placeholder="Cliente" />
-              <SelectAPI forwardRef={register} type="text" apiName="partners" name="seller" filterType="seller" placeholder="Vendedor" />
+            <SelectAPI forwardRef={register} type="text" apiName="partners" name="customer" filterType="customer" placeholder="Cliente" />
+            <SelectAPI forwardRef={register} type="text" apiName="partners" name="seller" filterType="seller" placeholder="Vendedor" />
 
-              <h3>Produto 1</h3>
-              <SelectAPI forwardRef={register} type="text" apiName="products" name="product" placeholder="Produto" />
-              <input ref={register} type="number" name="quantity" placeholder="Quantidade" min={1} defaultValue={1}/>
+            <h3>Produto 1</h3>
+            <SelectAPI forwardRef={register} type="text" apiName="products" name="product" placeholder="Produto" />
+            <input ref={register} type="number" name="quantity" placeholder="Quantidade" min={1} defaultValue={1}/>
 
-              <h3>Produto 2</h3>
-              <SelectAPI forwardRef={register} type="text" apiName="products" name="product_2" placeholder="Produto" />
-              <input ref={register} type="number" name="quantity_2" placeholder="Quantidade" min={0} defaultValue={0} />
+            <h3>Produto 2</h3>
+            <SelectAPI forwardRef={register} type="text" apiName="products" name="product_2" placeholder="Produto" />
+            <input ref={register} type="number" name="quantity_2" placeholder="Quantidade" min={0} defaultValue={0} />
 
-              <button>Adicionar</button>
-            </form>
-          </div>
+            <button>Adicionar</button>
+          </CustomForm>
         )}
       </Main>
     </div>

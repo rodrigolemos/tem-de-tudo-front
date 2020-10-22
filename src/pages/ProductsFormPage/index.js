@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import SidePanel from '../../components/SidePanel';
 import UserPanel from '../../components/UserPanel';
 import Main from '../../components/Main';
+import CustomForm from '../../components/CustomForm';
 
 import { api } from '../../services/api';
 
@@ -93,26 +94,24 @@ const ProductsFormPage = () => {
           <h1>Adicionar Produto</h1>
           <Link to="/products">Voltar</Link>
         </div>
-        <div className="form-wrapper">
-          <form onSubmit={handleSubmit(validateForm)}>
-            <h2>Informações do Produto</h2>
-            <input ref={register} type="text" name="name" placeholder="Nome" />
-            <input ref={register} type="text" name="description" placeholder="Descrição" />
-            <input ref={register} type="text" name="brand" placeholder="Marca" />
-            <input ref={register} type="text" name="provider" placeholder="Fornecedor" />
-            <input ref={register} type="text" name="classification" placeholder="Classificação" />
-            <input ref={register} type="text" name="cost_price" placeholder="Preço de Custo" />
-            <input ref={register} type="text" name="sale_price" placeholder="Preço de Venda" />
-            <input ref={register} type="text" name="stock_quantity" placeholder="Quantidade em Estoque" />
-            <input ref={register} type="text" name="store_quantity" placeholder="Quantidade em Loja" />
-            <select ref={register} name="status" defaultValue="">
-              <option value="" disabled>Selecione</option>
-              <option value="A">Ativo</option>
-              <option value="I">Suspenso</option>
-            </select>
-            <button>Adicionar</button>
-          </form>
-        </div>
+        <CustomForm onSubmit={handleSubmit(validateForm)}>
+          <h2>Informações do Produto</h2>
+          <input ref={register} type="text" name="name" placeholder="Nome" />
+          <input ref={register} type="text" name="description" placeholder="Descrição" />
+          <input ref={register} type="text" name="brand" placeholder="Marca" />
+          <input ref={register} type="text" name="provider" placeholder="Fornecedor" />
+          <input ref={register} type="text" name="classification" placeholder="Classificação" />
+          <input ref={register} type="text" name="cost_price" placeholder="Preço de Custo" />
+          <input ref={register} type="text" name="sale_price" placeholder="Preço de Venda" />
+          <input ref={register} type="text" name="stock_quantity" placeholder="Quantidade em Estoque" />
+          <input ref={register} type="text" name="store_quantity" placeholder="Quantidade em Loja" />
+          <select ref={register} name="status" defaultValue="">
+            <option value="" disabled>Selecione</option>
+            <option value="A">Ativo</option>
+            <option value="I">Suspenso</option>
+          </select>
+          <button>Adicionar</button>
+        </CustomForm>
       </Main>
     </div>
   )

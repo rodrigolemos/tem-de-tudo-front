@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import SidePanel from '../../components/SidePanel';
 import UserPanel from '../../components/UserPanel';
 import Main from '../../components/Main';
+import CustomForm from '../../components/CustomForm';
 
 import { api } from '../../services/api';
 
@@ -88,9 +89,8 @@ const PartnersFormPage = () => {
           <h1>Adicionar Parceiro</h1>
           <Link to="/partners">Voltar</Link>
         </div>
-        <div className="form-wrapper">
-          <h2>Informações do Parceiro</h2>
-          <form onSubmit={handleSubmit(validateForm)}>
+          <CustomForm onSubmit={handleSubmit(validateForm)}>
+            <h2>Informações do Parceiro</h2>
             <input ref={register} type="text" name="name" placeholder="Nome do Parceiro" />
             <input ref={register} type="text" name="address" placeholder="Endereço" />
             <input ref={register} type="text" name="phone" placeholder="Telefone" />
@@ -105,8 +105,7 @@ const PartnersFormPage = () => {
               <option value="I">Suspenso</option>
             </select>
             <button>Adicionar</button>
-          </form>
-        </div>
+          </CustomForm>
       </Main>
     </div>
   )

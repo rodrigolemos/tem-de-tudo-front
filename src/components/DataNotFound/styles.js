@@ -1,21 +1,11 @@
-import styled, { keyframes } from 'styled-components';
-
-const showFromLeft = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(-2rem);
-  }
-  to {
-    opacity: .4;
-    transform: translateX(0);
-  }
-`;
+import styled from 'styled-components';
+import { showFromLeftOpacity } from '../../styles/animations';
 
 export const Container = styled.div`
   width: 100%;
   height: 100%;
   opacity: .4;
-  animation: ${showFromLeft} .7s ease-in-out;
+  animation: ${showFromLeftOpacity} .7s ease-in-out;
 
   display: flex;
   align-items: center;
