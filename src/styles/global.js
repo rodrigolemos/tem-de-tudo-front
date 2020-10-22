@@ -6,6 +6,8 @@ export const colors = {
   bgSecondary: '#F7BF3D',
   fontPrimary: '#2480C1',
   fontSecondary: '#EEE',
+  confirm: '#3085D6',
+  cancel: '#D33'
 }
 
 export default createGlobalStyle`
