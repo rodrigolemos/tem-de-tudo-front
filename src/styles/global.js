@@ -207,6 +207,10 @@ export default createGlobalStyle`
       align-items: center;
       flex-direction: column;
 
+      @media only screen and (max-width: 1070px) {
+        width: 75%;
+      }
+
       input, select {
         font-size: 1.6rem;
         width: 95%;
