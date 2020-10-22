@@ -50,8 +50,7 @@ const Partners = () => {
 
       try {
 
-        // put
-        const response = await api.get(`/partners/remove/${id}`);
+        const response = await api.put(`/partners/remove/${id}`);
 
         if (response.status === 200) {
 

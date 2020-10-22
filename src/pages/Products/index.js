@@ -50,8 +50,7 @@ const Products = () => {
 
       try {
 
-        // put
-        const response = await api.get(`/products/remove/${id}`);
+        const response = await api.put(`/products/remove/${id}`);
 
         if (response.status === 200) {
 
