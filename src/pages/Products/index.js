@@ -45,35 +45,48 @@ const Products = () => {
 
   const removeProduct = async (id) => {
 
-    if (window.confirm('Deseja realmente remover o produto?')) {
+    Swal.fire({
+      title: 'Deseja realmente remover o produto?',
+      text: 'O histórico de vendas não será afetado',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sim',
+      cancelButtonText: 'Não'
+    }).then(async (result) => {
 
-      setLoading(true);
+      if (result.isConfirmed) {
 
-      try {
+        setLoading(true);
 
-        const response = await api.put(`/products/remove/${id}`);
+        try {
 
-        if (response.status === 200) {
+          const response = await api.put(`/products/remove/${id}`);
 
-          setProducts(...[products.filter(product => product.id !== id)]);
+          if (response.status === 200) {
 
-          Swal.fire({
-            title: 'Produto removido!',
-            icon: 'success',
-            confirmButtonText: 'Ok'
-          });
+            setProducts(...[products.filter(product => product.id !== id)]);
+
+            Swal.fire({
+              title: 'Produto removido!',
+              icon: 'success',
+              confirmButtonText: 'Ok'
+            });
+
+          }
+
+        } catch (err) {
+
+          console.log(err);
 
         }
 
-      } catch (err) {
-
-        console.log(err);
+        setLoading(false);
 
       }
 
-      setLoading(false);
-
-    }
+    });
 
   }
 
