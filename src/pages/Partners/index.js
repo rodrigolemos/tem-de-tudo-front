@@ -11,6 +11,7 @@ import Loading from '../../components/Loading';
 
 import { api } from '../../services/api';
 import formatPartner from '../../utils/formatParner';
+import { colors } from '../../styles/global';
 
 const Partners = () => {
 
@@ -45,35 +46,48 @@ const Partners = () => {
 
   const removePartner = async (id) => {
 
-    if (window.confirm('Deseja realmente remover o parceiro?')) {
+    Swal.fire({
+      title: 'Deseja realmente remover o parceiro?',
+      text: 'O histórico de vendas não será afetado',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: colors.confirm,
+      cancelButtonColor: colors.cancel,
+      confirmButtonText: 'Sim',
+      cancelButtonText: 'Não'
+    }).then(async (result) => {
+    
+      if (result.isConfirmed) {
 
-      setLoading(true);
+        setLoading(true);
 
-      try {
+        try {
 
-        const response = await api.put(`/partners/remove/${id}`);
+          const response = await api.put(`/partners/remove/${id}`);
 
-        if (response.status === 200) {
+          if (response.status === 200) {
 
-          setPartners(...[partners.filter(partner => partner.id !== id)]);
+            setPartners(...[partners.filter(partner => partner.id !== id)]);
 
-          Swal.fire({
-            title: 'Parceiro removido!',
-            icon: 'success',
-            confirmButtonText: 'Ok'
-          });
+            Swal.fire({
+              title: 'Parceiro removido!',
+              icon: 'success',
+              confirmButtonText: 'Ok'
+            });
+
+          }
+
+        } catch (err) {
+
+          console.log(err);
 
         }
 
-      } catch (err) {
-
-        console.log(err);
-
+        setLoading(false);
+      
       }
 
-      setLoading(false);
-
-    }
+    });
 
   }
 
