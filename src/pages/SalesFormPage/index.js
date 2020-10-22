@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -7,6 +7,7 @@ import SidePanel from '../../components/SidePanel';
 import UserPanel from '../../components/UserPanel';
 import Main from '../../components/Main';
 import SelectAPI from '../../components/SelectAPI';
+import Loading from '../../components/Loading';
 
 import { api } from '../../services/api';
 
@@ -14,11 +15,52 @@ const SalesFormPage = () => {
 
   const { register, handleSubmit } = useForm();
   const history = useHistory();
+  const [lastOrder, setLastOrder] = useState();
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = async () => {
+
+    setLoading(true);
+
+    try {
+
+      const response = await api.get('/sales/list');
+
+      if (response.status === 200) {
+        
+        const orders = response.data;
+
+        if (orders.length > 0) {
+
+          orders.sort((a, b) => (a.order > b.order) ? -1 : 1);
+
+          setLastOrder(orders[0].order + 1);
+
+        } else {
+
+          setLastOrder(1);
+
+        }
+
+      }
+
+    } catch (err) {
+
+      console.log(err);
+
+    }
+
+    setLoading(false);
+
+  }
 
   const validateForm = async (sale) => {
 
     const schema = yup.object().shape({
-      order: yup.number().positive().integer().required(),
       customer: yup.string().required(),
       seller: yup.string().required(),
       product: yup.string().required(),
@@ -46,7 +88,7 @@ const SalesFormPage = () => {
 
     const formatedSale = [
       {
-        "order": sale.order,
+        "order": lastOrder,
         "product_id": sale.product,
         "quantity": sale.quantity,
         "customer": {
@@ -68,7 +110,7 @@ const SalesFormPage = () => {
 
       formatedSale.push(
         {
-          "order": sale.order,
+          "order": lastOrder,
           "product_id": sale.product_2,
           "quantity": sale.quantity_2,
           "customer": {
@@ -86,13 +128,13 @@ const SalesFormPage = () => {
 
       const response = await api.post('/sales/create', formatedSale);
 
-      console.log(response);
-
       if (response.status === 200) {
 
         history.push('/');
 
       } else {
+
+        console.log(response);
 
         alert('Não foi possível adicionar a venda. Tente novamente mais tarde.');
 
@@ -113,27 +155,30 @@ const SalesFormPage = () => {
       </SidePanel>
       <Main>
         <div className="content-title">
-          <h1>Adicionar Venda (experimental)</h1>
+          <h1>Simular Venda (deverá haver um app)</h1>
           <Link to="/">Voltar</Link>
         </div>
-        <div className="form-wrapper">
-          <h2>Informações da Venda</h2>
-          <form onSubmit={handleSubmit(validateForm)}>
-            <input ref={register} type="text" name="order" placeholder="Número do pedido" />
-            <SelectAPI forwardRef={register} type="text" apiName="partners" name="customer" filterType="customer" placeholder="Cliente" />
-            <SelectAPI forwardRef={register} type="text" apiName="partners" name="seller" filterType="seller" placeholder="Vendedor" />
+        {loading ? (
+          <Loading />
+        ) : (
+          <div className="form-wrapper">
+            <h2>Informações da Venda</h2>
+            <form onSubmit={handleSubmit(validateForm)}>
+              <SelectAPI forwardRef={register} type="text" apiName="partners" name="customer" filterType="customer" placeholder="Cliente" />
+              <SelectAPI forwardRef={register} type="text" apiName="partners" name="seller" filterType="seller" placeholder="Vendedor" />
 
-            <h3>Produto 1</h3>
-            <SelectAPI forwardRef={register} type="text" apiName="products" name="product" placeholder="Produto" />
-            <input ref={register} type="number" name="quantity" placeholder="Quantidade" min={1} defaultValue={1}/>
+              <h3>Produto 1</h3>
+              <SelectAPI forwardRef={register} type="text" apiName="products" name="product" placeholder="Produto" />
+              <input ref={register} type="number" name="quantity" placeholder="Quantidade" min={1} defaultValue={1}/>
 
-            <h3>Produto 2</h3>
-            <SelectAPI forwardRef={register} type="text" apiName="products" name="product_2" placeholder="Produto" />
-            <input ref={register} type="number" name="quantity_2" placeholder="Quantidade" min={0} defaultValue={0} />
+              <h3>Produto 2</h3>
+              <SelectAPI forwardRef={register} type="text" apiName="products" name="product_2" placeholder="Produto" />
+              <input ref={register} type="number" name="quantity_2" placeholder="Quantidade" min={0} defaultValue={0} />
 
-            <button>Adicionar</button>
-          </form>
-        </div>
+              <button>Adicionar</button>
+            </form>
+          </div>
+        )}
       </Main>
     </div>
   )
