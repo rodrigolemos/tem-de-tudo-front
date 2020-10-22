@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { IoIosRemoveCircleOutline } from 'react-icons/io';
+import Swal from 'sweetalert2';
 
 import SidePanel from '../../components/SidePanel';
 import UserPanel from '../../components/UserPanel';
@@ -45,7 +46,7 @@ const Products = () => {
   const removeProduct = async (id) => {
 
     if (window.confirm('Deseja realmente remover o produto?')) {
-      
+
       setLoading(true);
 
       try {
@@ -56,7 +57,11 @@ const Products = () => {
 
           setProducts(...[products.filter(product => product.id !== id)]);
 
-          alert('Produto removido!');
+          Swal.fire({
+            title: 'Produto removido!',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+          });
 
         }
 

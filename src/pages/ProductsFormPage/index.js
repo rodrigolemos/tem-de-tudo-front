@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
+import Swal from 'sweetalert2';
 
 import SidePanel from '../../components/SidePanel';
 import UserPanel from '../../components/UserPanel';
@@ -35,7 +36,13 @@ const ProductsFormPage = () => {
 
     }).catch(err => {
 
-      alert('Preencha todos os campos corretamente.');
+      Swal.fire({
+        title: 'Atenção!',
+        text: 'Preencha todos os campos corretamente.',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      });
+
       console.log(err);
 
     });
@@ -54,13 +61,23 @@ const ProductsFormPage = () => {
 
       } else {
 
-        alert('Não foi possível adicionar o produto. Tente novamente mais tarde.');
+        Swal.fire({
+          title: 'Atenção!',
+          text: 'Não foi possível adicionar o produto. Tente novamente mais tarde.',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        });
 
       }
 
     } catch (err) {
 
-      alert('Não foi possível adicionar o produto. Tente novamente mais tarde.');
+      Swal.fire({
+        title: 'Atenção!',
+        text: 'Não foi possível adicionar o produto. Tente novamente mais tarde.',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      });
 
     }
 

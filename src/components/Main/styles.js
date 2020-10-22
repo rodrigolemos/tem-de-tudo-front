@@ -18,6 +18,7 @@ export const Container = styled.main`
 
   @media only screen and (max-width: 414px)  {
     width: 100vw;
+    height: 100vh;
   }
 `;
 

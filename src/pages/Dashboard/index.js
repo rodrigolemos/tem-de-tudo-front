@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineFileSearch } from 'react-icons/ai';
+import Swal from 'sweetalert2';
 
 import SidePanel from '../../components/SidePanel';
 import UserPanel from '../../components/UserPanel';
@@ -32,7 +33,12 @@ const Dashboard = () => {
     if (starts && finishes) {
       setFetch(true);
     } else {
-      alert('Preencha as datas corretamente.');
+      Swal.fire({
+        title: 'Atenção!',
+        text: 'Preencha as datas corretamente.',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      });
     }
   }
 

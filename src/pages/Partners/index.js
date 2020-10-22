@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { IoIosRemoveCircleOutline } from 'react-icons/io';
+import Swal from 'sweetalert2';
 
 import SidePanel from '../../components/SidePanel';
 import UserPanel from '../../components/UserPanel';
@@ -45,7 +46,7 @@ const Partners = () => {
   const removePartner = async (id) => {
 
     if (window.confirm('Deseja realmente remover o parceiro?')) {
-      
+
       setLoading(true);
 
       try {
@@ -56,7 +57,11 @@ const Partners = () => {
 
           setPartners(...[partners.filter(partner => partner.id !== id)]);
 
-          alert('Parceiro removido!');
+          Swal.fire({
+            title: 'Parceiro removido!',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+          });
 
         }
 

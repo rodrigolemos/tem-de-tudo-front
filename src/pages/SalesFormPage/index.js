@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
+import Swal from 'sweetalert2';
 
 import SidePanel from '../../components/SidePanel';
 import UserPanel from '../../components/UserPanel';
@@ -73,7 +74,13 @@ const SalesFormPage = () => {
 
     }).catch(err => {
 
-      alert('Preencha todos os campos corretamente.');
+      Swal.fire({
+        title: 'Atenção!',
+        text: 'Preencha todos os campos corretamente.',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      });
+
       console.log(err);
 
     });
@@ -102,7 +109,12 @@ const SalesFormPage = () => {
     if (sale.product_2 && sale.quantity_2 > 0) {
 
       if (sale.product === sale.product_2) {
-        alert('Selecione um produto diferente do outro.');
+        Swal.fire({
+          title: 'Atenção!',
+          text: 'Selecione um produto diferente do outro.',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        });
         return;
       }
 
@@ -132,15 +144,27 @@ const SalesFormPage = () => {
 
       } else {
 
-        console.log(response);
+        Swal.fire({
+          title: 'Atenção!',
+          text: 'Não foi possível adicionar a venda. Tente novamente mais tarde.',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        });
 
-        alert('Não foi possível adicionar a venda. Tente novamente mais tarde.');
+        console.log(response);
 
       }
 
     } catch (err) {
 
-      alert('Não foi possível adicionar a venda. Tente novamente mais tarde.');
+      Swal.fire({
+        title: 'Atenção!',
+        text: 'Não foi possível adicionar a venda. Tente novamente mais tarde.',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      });
+
+      console.log(err);
 
     }
 
@@ -153,14 +177,14 @@ const SalesFormPage = () => {
       </SidePanel>
       <Main>
         <div className="content-title">
-          <h1>Simular Venda (deverá haver um app)</h1>
+          <h1>Simular Venda</h1>
           <Link to="/">Voltar</Link>
         </div>
         {loading ? (
           <Loading />
         ) : (
           <div className="form-wrapper">
-            <h2>Informações da Venda</h2>
+            <h2>Informações de Venda</h2>
             <form onSubmit={handleSubmit(validateForm)}>
               <SelectAPI forwardRef={register} type="text" apiName="partners" name="customer" filterType="customer" placeholder="Cliente" />
               <SelectAPI forwardRef={register} type="text" apiName="partners" name="seller" filterType="seller" placeholder="Vendedor" />

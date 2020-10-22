@@ -11,6 +11,13 @@ export const colors = {
 export default createGlobalStyle`
   html {
     font-size: 10px;
+
+    .swal2-height-auto {
+      height: 100vh !important;
+    }
+    .swal2-popup {
+      font-size: 1.5rem;
+    }
   }
 
   * {
@@ -33,6 +40,7 @@ export default createGlobalStyle`
     a, a:active {
       text-decoration: none;
     }
+
   }
 
   ::-webkit-scrollbar {
