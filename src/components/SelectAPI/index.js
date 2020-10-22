@@ -47,8 +47,8 @@ const SelectAPI = ({...props}) => {
       {loading ? (
         <h5>Carregando...</h5>
       ) : (
-        <select ref={forwardRef} name={name}>
-          <option value="">{placeholder}</option>
+        <select ref={forwardRef} name={name} defaultValue="">
+          <option value="" disabled>Selecione o {placeholder}</option>
           {items.map(item => (
             <option key={item.id} value={item.id}>{item.name}</option>
           ))}

@@ -88,8 +88,8 @@ const ProductsFormPage = () => {
             <input ref={register} type="text" name="sale_price" placeholder="Preço de Venda" />
             <input ref={register} type="text" name="stock_quantity" placeholder="Quantidade em Estoque" />
             <input ref={register} type="text" name="store_quantity" placeholder="Quantidade em Loja" />
-            <select ref={register} name="status">
-              <option value="">Selecione</option>
+            <select ref={register} name="status" defaultValue="">
+              <option value="" disabled>Selecione</option>
               <option value="A">Ativo</option>
               <option value="I">Suspenso</option>
             </select>

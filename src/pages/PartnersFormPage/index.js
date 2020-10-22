@@ -77,13 +77,13 @@ const PartnersFormPage = () => {
             <input ref={register} type="text" name="name" placeholder="Nome do Parceiro" />
             <input ref={register} type="text" name="address" placeholder="Endereço" />
             <input ref={register} type="text" name="phone" placeholder="Telefone" />
-            <select ref={register} name="type">
-              <option value="">Selecione</option>
+            <select ref={register} name="type" defaultValue="">
+              <option value="" disabled>Selecione</option>
               <option value="customer">Cliente</option>
               <option value="seller">Vendedor</option>
             </select>
-            <select ref={register} name="status">
-              <option value="">Selecione</option>
+            <select ref={register} name="status" defaultValue="">
+              <option value="" disabled>Selecione</option>
               <option value="A">Ativo</option>
               <option value="I">Suspenso</option>
             </select>
