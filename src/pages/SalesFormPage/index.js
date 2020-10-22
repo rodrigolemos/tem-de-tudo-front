@@ -36,8 +36,6 @@ const SalesFormPage = () => {
 
         if (orders.length > 0) {
 
-          orders.sort((a, b) => (a.order > b.order) ? -1 : 1);
-
           setLastOrder(orders[0].order + 1);
 
         } else {
