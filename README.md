@@ -1,68 +1,49 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Tem de tudo (frontend)
 
-## Available Scripts
+## Definição
 
-In the project directory, you can run:
+Celeste é proprietária da Loja Tem de Tudo, loja localizada em Pinheiros - São Paulo. Sua loja iniciou com produtos de papelaria e hoje vende diversos tipos de produtos. Celeste atualmente tem dois funcionários, porém somente ela irá usar o sistema que foi construído.
 
-### `yarn start`
+Esta é uma aplicação que realiza o controle de produtos, funcionários, clientes e vendas.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Com as informações geradas, a proprietária irá extrair as seguintes informações:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- Vendas Semanais (é a soma de todas as vendas)
+- Lucro semanal (é a soma das vendas - a soma de todos valores de custo dos produtos vendidos)
+- Melhores vendedores (é o vendedor que vendeu o maior valor)
+- Melhores clientes (é o cliente que comprou o maior valor)
 
-### `yarn test`
+Todas as informações são dinâmicas, ou seja, para cada valor inserido os cálculos são atualizados.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Instalação e execução
 
-### `yarn build`
+- Clone o repositório ```https://github.com/rodrigolemos/tem-de-tudo-test-front```
+- Vá até o diretório ```cd tem-de-tudo-test-front```
+- Execute ```yarn``` ou ```npm install``` para instalar as dependências
+- Execute ```yarn start``` ou ```npm start``` para rodar o a aplicação
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Em funcionamento
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- Vendas semanais, lucro semanal, melhores vendedores e melhores clientes;
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Gestão de produtos;
 
-### `yarn eject`
+- Gestão de funcionários/clientes;
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Entregas
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1) É necessário você definir, descrever e estimar tempo para tarefas a serem realizadas a partir do escopo do projeto.
+- Tarefa realizada no seguinte [link](https://github.com/rodrigolemos/tem-de-tudo-test/blob/main/roadmap.md)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+2) É necessário que o frontend funcione um projeto separado do backend.
+- Tarefa realizada no seguinte [link](https://tem-de-tudo-test-rodrigo.netlify.app/).
 
-## Learn More
+3) É necessário você desenvolver a ferramenta através das tarefas definidas por você (sem restrições de tecnologias, uma sugestão é criar branches e commits relacionados).
+- Tarefa realizada.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4) É necessário você subir aplicação no IBM Cloud e disponibilizar um link público utilizando CD e CI.
+- Tarefa realizada utilizando uma outra plataforma de cloud ([Digital Ocean](https://www.digitalocean.com/)) e [Github Actions](https://github.com/features/actions) como CD/CI.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+5) É necessário utilizar o Github para versionar.
+- Tarefa realizada.
