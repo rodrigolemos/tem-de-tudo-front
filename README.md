@@ -44,6 +44,7 @@ Todas as informações são dinâmicas, ou seja, para cada valor inserido os cá
 
 2) É necessário que o frontend funcione um projeto separado do backend.
 - Tarefa realizada no seguinte [link](https://tem-de-tudo-test-rodrigo.netlify.app/).
+- Obs.: por questões de segurança, o netlify não permite acesso à APIs http, somente https. Por esse motivo, é recomendado que você rode o front-end em sua máquina local através desse repositório.
 
 3) É necessário você desenvolver a ferramenta através das tarefas definidas por você (sem restrições de tecnologias, uma sugestão é criar branches e commits relacionados).
 - Tarefa realizada.
