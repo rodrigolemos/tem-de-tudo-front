@@ -26,9 +26,15 @@ Todas as informações são dinâmicas, ou seja, para cada valor inserido os cá
 
 - Vendas semanais, lucro semanal, melhores vendedores e melhores clientes;
 
+![Vendas semanais](https://github.com/rodrigolemos/tem-de-tudo-test-front/blob/main/public/front-1.png)
+
 - Gestão de produtos;
 
+![Gestão de produtos](https://github.com/rodrigolemos/tem-de-tudo-test-front/blob/main/public/front-2.png)
+
 - Gestão de funcionários/clientes;
+
+![Gestão de funcionários](https://github.com/rodrigolemos/tem-de-tudo-test-front/blob/main/public/front-3.png)
 
 
 # Entregas
