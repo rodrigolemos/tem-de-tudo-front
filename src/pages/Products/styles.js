@@ -5,13 +5,7 @@ export const QtdBadge = styled.span`
   border-radius: .5rem;
   transition: all .1s ease-in-out;
 
-  ${({ qtd }) => qtd >= 7 ? css`
-    /* border: 2px solid var(--success);
-    color: var(--success); */
-  ` : qtd >= 3 && qtd < 7 ? css`
-    /* border: 2px solid var(--warning); */
-    /* color: var(--warning); */
-  ` : css`
+  ${({ qtd }) => qtd <= 3 && css`
     color: #FFF;
     background-color: var(--danger);
   `}
