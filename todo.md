@@ -12,11 +12,12 @@
 - [ ] Create edit forms
 - [ ] Redesign CSS
 - [ ] Input masks
+- [ ] Fix select loading message
 
 ### API
 
-- [ ] Treat errors correctly
-- [ ] Remove logs
+- [x] Treat errors correctly
+- [x] Remove logs
 
 ### Performance/behavior
 
