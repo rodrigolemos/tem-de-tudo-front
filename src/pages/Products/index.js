@@ -30,7 +30,11 @@ const Products = () => {
         setProducts(response.data);
       }
     } catch (err) {
-      console.log(err);
+      Swal.fire({
+        title: 'Não foi possível listar os produtos. Tente novamente mais tarde.',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      });
     }
 
     setLoading(false);
@@ -67,7 +71,11 @@ const Products = () => {
             });
           }
         } catch (err) {
-          console.log(err);
+          Swal.fire({
+            title: 'Não foi possível remover o produto. Tente novamente mais tarde.',
+            icon: 'error',
+            confirmButtonText: 'Ok',
+          });
         }
 
         setLoading(false);

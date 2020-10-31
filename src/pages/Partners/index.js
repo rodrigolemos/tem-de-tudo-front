@@ -27,7 +27,11 @@ const Partners = () => {
         setPartners(response.data);
       }
     } catch (err) {
-      console.log(err);
+      Swal.fire({
+        title: 'Não foi possível listar os parceiros. Tente novamente mais tarde.',
+        icon: 'warning',
+        confirmButtonText: 'Ok',
+      });
     }
 
     setLoading(false);
@@ -64,7 +68,11 @@ const Partners = () => {
             });
           }
         } catch (err) {
-          console.log(err);
+          Swal.fire({
+            title: 'Não foi possível remover o parceiro. Tente novamente mais tarde.',
+            icon: 'warning',
+            confirmButtonText: 'Ok',
+          });
         }
 
         setLoading(false);

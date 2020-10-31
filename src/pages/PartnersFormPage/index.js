@@ -76,8 +76,6 @@ const PartnersFormPage = () => {
         icon: 'error',
         confirmButtonText: 'Ok',
       });
-
-      console.log(err);
     });
   };
 
@@ -94,24 +92,24 @@ const PartnersFormPage = () => {
         {loading ? (
           <Loading />
         ) : (
-          <CustomForm onSubmit={handleSubmit(validateForm)}>
-            <h2>Informações do Parceiro</h2>
-            <input ref={register} type="text" name="name" placeholder="Nome do Parceiro" />
-            <input ref={register} type="text" name="address" placeholder="Endereço" />
-            <input ref={register} type="text" name="phone" placeholder="Telefone" />
-            <select ref={register} name="type" defaultValue="">
-              <option value="" disabled>Selecione</option>
-              <option value="customer">Cliente</option>
-              <option value="seller">Vendedor</option>
-            </select>
-            <select ref={register} name="status" defaultValue="">
-              <option value="" disabled>Selecione</option>
-              <option value="A">Ativo</option>
-              <option value="I">Suspenso</option>
-            </select>
-            <button type="submit">Adicionar</button>
-          </CustomForm>
-        )}
+            <CustomForm onSubmit={handleSubmit(validateForm)}>
+              <h2>Informações do Parceiro</h2>
+              <input ref={register} type="text" name="name" placeholder="Nome do Parceiro" />
+              <input ref={register} type="text" name="address" placeholder="Endereço" />
+              <input ref={register} type="text" name="phone" placeholder="Telefone" />
+              <select ref={register} name="type" defaultValue="">
+                <option value="" disabled>Selecione</option>
+                <option value="customer">Cliente</option>
+                <option value="seller">Vendedor</option>
+              </select>
+              <select ref={register} name="status" defaultValue="">
+                <option value="" disabled>Selecione</option>
+                <option value="A">Ativo</option>
+                <option value="I">Suspenso</option>
+              </select>
+              <button type="submit">Adicionar</button>
+            </CustomForm>
+          )}
       </Main>
     </div>
   );

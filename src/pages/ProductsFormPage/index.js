@@ -81,8 +81,6 @@ const ProductsFormPage = () => {
         icon: 'error',
         confirmButtonText: 'Ok',
       });
-
-      console.log(err);
     });
   };
 
@@ -99,25 +97,25 @@ const ProductsFormPage = () => {
         {loading ? (
           <Loading />
         ) : (
-          <CustomForm onSubmit={handleSubmit(validateForm)}>
-            <h2>Informações do Produto</h2>
-            <input ref={register} type="text" name="name" placeholder="Nome" />
-            <input ref={register} type="text" name="description" placeholder="Descrição" />
-            <input ref={register} type="text" name="brand" placeholder="Marca" />
-            <input ref={register} type="text" name="provider" placeholder="Fornecedor" />
-            <input ref={register} type="text" name="classification" placeholder="Classificação" />
-            <input ref={register} type="text" name="cost_price" placeholder="Preço de Custo" />
-            <input ref={register} type="text" name="sale_price" placeholder="Preço de Venda" />
-            <input ref={register} type="text" name="stock_quantity" placeholder="Quantidade em Estoque" />
-            <input ref={register} type="text" name="store_quantity" placeholder="Quantidade em Loja" />
-            <select ref={register} name="status" defaultValue="">
-              <option value="" disabled>Selecione</option>
-              <option value="A">Ativo</option>
-              <option value="I">Suspenso</option>
-            </select>
-            <button type="submit">Adicionar</button>
-          </CustomForm>
-        )}
+            <CustomForm onSubmit={handleSubmit(validateForm)}>
+              <h2>Informações do Produto</h2>
+              <input ref={register} type="text" name="name" placeholder="Nome" />
+              <input ref={register} type="text" name="description" placeholder="Descrição" />
+              <input ref={register} type="text" name="brand" placeholder="Marca" />
+              <input ref={register} type="text" name="provider" placeholder="Fornecedor" />
+              <input ref={register} type="text" name="classification" placeholder="Classificação" />
+              <input ref={register} type="text" name="cost_price" placeholder="Preço de Custo" />
+              <input ref={register} type="text" name="sale_price" placeholder="Preço de Venda" />
+              <input ref={register} type="text" name="stock_quantity" placeholder="Quantidade em Estoque" />
+              <input ref={register} type="text" name="store_quantity" placeholder="Quantidade em Loja" />
+              <select ref={register} name="status" defaultValue="">
+                <option value="" disabled>Selecione</option>
+                <option value="A">Ativo</option>
+                <option value="I">Suspenso</option>
+              </select>
+              <button type="submit">Adicionar</button>
+            </CustomForm>
+          )}
       </Main>
     </div>
   );
