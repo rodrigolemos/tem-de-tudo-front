@@ -14,38 +14,30 @@ import formatPartner from '../../utils/formatParner';
 import { colors } from '../../styles/global';
 
 const Partners = () => {
-
   const [loading, setLoading] = useState(false);
   const [partners, setPartners] = useState([]);
 
-  useEffect(() => {
-    fetchPartners();
-  }, []);
-
   const fetchPartners = async () => {
-
     setLoading(true);
 
     try {
-
       const response = await api.get('/partners/list');
 
       if (response.status === 200) {
         setPartners(response.data);
       }
-
     } catch (err) {
-
       console.log(err);
-
     }
 
     setLoading(false);
+  };
 
-  }
+  useEffect(() => {
+    fetchPartners();
+  }, []);
 
   const removePartner = async (id) => {
-
     Swal.fire({
       title: 'Deseja realmente remover o parceiro?',
       text: 'O histórico de vendas não será afetado',
@@ -54,42 +46,31 @@ const Partners = () => {
       confirmButtonColor: colors.confirm,
       cancelButtonColor: colors.cancel,
       confirmButtonText: 'Sim',
-      cancelButtonText: 'Não'
+      cancelButtonText: 'Não',
     }).then(async (result) => {
-    
       if (result.isConfirmed) {
-
         setLoading(true);
 
         try {
-
           const response = await api.put(`/partners/remove/${id}`);
 
           if (response.status === 200) {
-
-            setPartners(...[partners.filter(partner => partner.id !== id)]);
+            setPartners(...[partners.filter((partner) => partner.id !== id)]);
 
             Swal.fire({
               title: 'Parceiro removido!',
               icon: 'success',
-              confirmButtonText: 'Ok'
+              confirmButtonText: 'Ok',
             });
-
           }
-
         } catch (err) {
-
           console.log(err);
-
         }
 
         setLoading(false);
-      
       }
-
     });
-
-  }
+  };
 
   return (
     <div className="global-container">
@@ -108,7 +89,7 @@ const Partners = () => {
             <table className="custom-table">
               <thead>
                 <tr>
-                  <th></th>
+                  <th aria-label="control" />
                   <th>ID</th>
                   <th>Nome</th>
                   <th>Endereço</th>
@@ -117,7 +98,7 @@ const Partners = () => {
                 </tr>
               </thead>
               <tbody>
-                {partners.map(partner => (
+                {partners.map((partner) => (
                   <tr key={partner.id}>
                     <td className="center">
                       <IoIosRemoveCircleOutline
@@ -143,7 +124,7 @@ const Partners = () => {
         )}
       </Main>
     </div>
-  )
+  );
 };
 
 export default Partners;

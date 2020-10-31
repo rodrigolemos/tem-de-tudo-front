@@ -7,8 +7,8 @@ export const colors = {
   fontPrimary: '#2480C1',
   fontSecondary: '#EEE',
   confirm: '#3085D6',
-  cancel: '#D33'
-}
+  cancel: '#D33',
+};
 
 export default createGlobalStyle`
   html {

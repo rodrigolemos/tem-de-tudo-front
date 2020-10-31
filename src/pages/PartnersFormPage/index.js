@@ -14,13 +14,51 @@ import { api } from '../../services/api';
 import { colors } from '../../styles/global';
 
 const PartnersFormPage = () => {
-
   const { register, handleSubmit } = useForm();
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  const validateForm = async (partner) => {
+  const submitForm = async (partner) => {
+    setLoading(true);
 
+    try {
+      const response = await api.post('/partners/create', partner);
+
+      if (response.status === 200) {
+        Swal.fire({
+          title: 'Parceiro cadastrado!',
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonColor: colors.confirm,
+          confirmButtonText: 'Ok',
+        }).then(() => {
+          setLoading(false);
+
+          history.push('/partners');
+        });
+
+        return;
+      }
+
+      Swal.fire({
+        title: 'Atenção!',
+        text: 'Não foi possível adicionar o parceiro. Tente novamente mais tarde.',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      });
+    } catch (err) {
+      Swal.fire({
+        title: 'Atenção!',
+        text: 'Não foi possível adicionar o parceiro. Tente novamente mais tarde.',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      });
+    }
+
+    setLoading(false);
+  };
+
+  const validateForm = async (partner) => {
     const schema = yup.object().shape({
       name: yup.string().required(),
       address: yup.string().required(),
@@ -30,75 +68,18 @@ const PartnersFormPage = () => {
     });
 
     schema.validate(partner).then(async () => {
-
       await submitForm(partner);
-
-    }).catch(err => {
-
+    }).catch((err) => {
       Swal.fire({
         title: 'Atenção!',
         text: 'Preencha todos os campos corretamente.',
         icon: 'error',
-        confirmButtonText: 'Ok'
+        confirmButtonText: 'Ok',
       });
 
       console.log(err);
-
     });
-
-  }
-
-  const submitForm = async (partner) => {
-
-    setLoading(true);
-
-    try {
-
-      const response = await api.post('/partners/create', partner);
-
-      if (response.status === 200) {
-
-        Swal.fire({
-          title: 'Parceiro cadastrado!',
-          icon: 'success',
-          showCancelButton: false,
-          confirmButtonColor: colors.confirm,
-          confirmButtonText: 'Ok'
-        }).then(() => {
-        
-          setLoading(false);
-
-          history.push('/partners');
-
-        });
-
-        return;
-
-      } else {
-
-        Swal.fire({
-          title: 'Atenção!',
-          text: 'Não foi possível adicionar o parceiro. Tente novamente mais tarde.',
-          icon: 'error',
-          confirmButtonText: 'Ok'
-        });
-
-      }
-
-    } catch (err) {
-
-      Swal.fire({
-        title: 'Atenção!',
-        text: 'Não foi possível adicionar o parceiro. Tente novamente mais tarde.',
-        icon: 'error',
-        confirmButtonText: 'Ok'
-      });
-
-    }
-
-    setLoading(false);
-
-  }
+  };
 
   return (
     <div className="global-container">
@@ -128,12 +109,12 @@ const PartnersFormPage = () => {
               <option value="A">Ativo</option>
               <option value="I">Suspenso</option>
             </select>
-            <button>Adicionar</button>
+            <button type="submit">Adicionar</button>
           </CustomForm>
         )}
       </Main>
     </div>
-  )
+  );
 };
 
 export default PartnersFormPage;

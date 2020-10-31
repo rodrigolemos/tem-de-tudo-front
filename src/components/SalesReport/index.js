@@ -1,46 +1,37 @@
 import React, { useState, useEffect } from 'react';
 
-import CustomChart from '../../components/CustomChart';
-import DataNotFound from '../../components/DataNotFound';
-import Loading from '../../components/Loading';
+import CustomChart from '../CustomChart';
+import DataNotFound from '../DataNotFound';
+import Loading from '../Loading';
 
 import { api } from '../../services/api';
 import calcArrayTotal from '../../utils/calcArrayTotal';
 
 const SalesReport = ({ starts, finishes }) => {
-  
   const [loading, setLoading] = useState(false);
   const [sales, setSales] = useState([]);
 
-  useEffect(() => {
-
-    if (starts && finishes) {
-      fetchSales(starts, finishes);
-    }
-
-  }, [starts, finishes]);
-
-  const fetchSales = async (starts, finishes) => {
-
+  const fetchSales = async (pstarts, pfinishes) => {
     setLoading(true);
 
     try {
-
-      const response = await api.get(`/sales/period?starts=${starts}&finishes=${finishes}`);
+      const response = await api.get(`/sales/period?starts=${pstarts}&finishes=${pfinishes}`);
 
       if (response.status === 200) {
         setSales(response.data);
       }
-
     } catch (err) {
-
       console.log(err);
-
     }
 
     setLoading(false);
+  };
 
-  }
+  useEffect(() => {
+    if (starts && finishes) {
+      fetchSales(starts, finishes);
+    }
+  }, [starts, finishes]);
 
   return (
     <>
@@ -62,7 +53,7 @@ const SalesReport = ({ starts, finishes }) => {
         )
       )}
     </>
-  )
-}
+  );
+};
 
 export default SalesReport;

@@ -14,38 +14,30 @@ import formatValue from '../../utils/formatValue';
 import { colors } from '../../styles/global';
 
 const Products = () => {
-
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
   const fetchProducts = async () => {
-
     setLoading(true);
 
     try {
-
       const response = await api.get('/products/list');
 
       if (response.status === 200) {
         setProducts(response.data);
       }
-
     } catch (err) {
-
       console.log(err);
-
     }
 
     setLoading(false);
+  };
 
-  }
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   const removeProduct = async (id) => {
-
     Swal.fire({
       title: 'Deseja realmente remover o produto?',
       text: 'O histórico de vendas não será afetado',
@@ -54,42 +46,31 @@ const Products = () => {
       confirmButtonColor: colors.confirm,
       cancelButtonColor: colors.cancel,
       confirmButtonText: 'Sim',
-      cancelButtonText: 'Não'
+      cancelButtonText: 'Não',
     }).then(async (result) => {
-
       if (result.isConfirmed) {
-
         setLoading(true);
 
         try {
-
           const response = await api.put(`/products/remove/${id}`);
 
           if (response.status === 200) {
-
-            setProducts(...[products.filter(product => product.id !== id)]);
+            setProducts(...[products.filter((product) => product.id !== id)]);
 
             Swal.fire({
               title: 'Produto removido!',
               icon: 'success',
-              confirmButtonText: 'Ok'
+              confirmButtonText: 'Ok',
             });
-
           }
-
         } catch (err) {
-
           console.log(err);
-
         }
 
         setLoading(false);
-
       }
-
     });
-
-  }
+  };
 
   return (
     <div className="global-container">
@@ -108,7 +89,7 @@ const Products = () => {
             <table className="custom-table">
               <thead>
                 <tr>
-                  <th></th>
+                  <th aria-label="control" />
                   <th>ID</th>
                   <th>Nome</th>
                   <th>Marca</th>
@@ -120,7 +101,7 @@ const Products = () => {
                 </tr>
               </thead>
               <tbody>
-                {products.map(product => (
+                {products.map((product) => (
                   <tr key={product.id}>
                     <td className="center">
                       <IoIosRemoveCircleOutline
@@ -149,7 +130,7 @@ const Products = () => {
         )}
       </Main>
     </div>
-  )
+  );
 };
 
 export default Products;

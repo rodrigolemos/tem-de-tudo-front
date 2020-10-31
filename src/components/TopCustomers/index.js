@@ -1,45 +1,36 @@
 import React, { useState, useEffect } from 'react';
 
-import DataNotFound from '../../components/DataNotFound';
-import Loading from '../../components/Loading';
+import DataNotFound from '../DataNotFound';
+import Loading from '../Loading';
 
 import { api } from '../../services/api';
 import formatValue from '../../utils/formatValue';
 
 const TopCustomers = ({ starts, finishes }) => {
-  
   const [loading, setLoading] = useState(false);
   const [topCustommers, setTopCustomers] = useState([]);
 
-  useEffect(() => {
-
-    if (starts && finishes) {
-      fetchTopCustomers(starts, finishes);
-    }
-
-  }, [starts, finishes]);
-
-  const fetchTopCustomers = async (starts, finishes) => {
-
+  const fetchTopCustomers = async (pstarts, pfinishes) => {
     setLoading(true);
 
     try {
-
-      const response = await api.get(`/sales/top-customers?starts=${starts}&finishes=${finishes}`);
+      const response = await api.get(`/sales/top-customers?starts=${pstarts}&finishes=${pfinishes}`);
 
       if (response.status === 200) {
         setTopCustomers(response.data);
       }
-
     } catch (err) {
-
       console.log(err);
-
     }
 
     setLoading(false);
+  };
 
-  }
+  useEffect(() => {
+    if (starts && finishes) {
+      fetchTopCustomers(starts, finishes);
+    }
+  }, [starts, finishes]);
 
   return (
     <>
@@ -57,8 +48,8 @@ const TopCustomers = ({ starts, finishes }) => {
                 </tr>
               </thead>
               <tbody>
-                {topCustommers.map((customer, index) => (
-                  <tr key={index}>
+                {topCustommers.map((customer) => (
+                  <tr key={customer.id}>
                     <td>{customer.name}</td>
                     <td className="center">
                       <span className="simple-badge">{formatValue(customer.total)}</span>
@@ -75,7 +66,7 @@ const TopCustomers = ({ starts, finishes }) => {
         )
       )}
     </>
-  )
-}
+  );
+};
 
 export default TopCustomers;

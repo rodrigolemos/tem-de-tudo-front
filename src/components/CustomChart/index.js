@@ -4,11 +4,10 @@ import ReactApexChart from 'react-apexcharts';
 import formatValue from '../../utils/formatValue';
 import formatDate from '../../utils/formatDate';
 
-const CustomChart = ({ title, info }) => {
-
+const CustomChart = ({ info }) => {
   const [values, axis] = [[], []];
 
-  info.map(day => {
+  info.map((day) => {
     axis.push(formatDate(day.date));
     values.push(day.total);
     return true;
@@ -17,7 +16,7 @@ const CustomChart = ({ title, info }) => {
   const config = {
     series: [{
       name: 'Vendas',
-      data: values
+      data: values,
     }],
     options: {
       chart: {
@@ -29,31 +28,31 @@ const CustomChart = ({ title, info }) => {
           dataLabels: {
             position: 'top',
           },
-        }
+        },
       },
       dataLabels: {
         enabled: true,
-        formatter: function (val) {
+        formatter(val) {
           return formatValue(val);
         },
         offsetY: -20,
         style: {
           fontSize: '12px',
           fontFamily: 'Noto Sans TC',
-          colors: ["#304758"]
-        }
+          colors: ['#304758'],
+        },
       },
       xaxis: {
         categories: axis,
         // position: 'top',
         labels: {
-          show: false
+          show: false,
         },
         axisBorder: {
-          show: false
+          show: false,
         },
         axisTicks: {
-          show: false
+          show: false,
         },
         crosshairs: {
           fill: {
@@ -64,40 +63,30 @@ const CustomChart = ({ title, info }) => {
               stops: [0, 100],
               opacityFrom: 0.4,
               opacityTo: 0.5,
-            }
-          }
+            },
+          },
         },
         tooltip: {
           enabled: true,
-        }
+        },
       },
       yaxis: {
         axisBorder: {
-          show: false
+          show: false,
         },
         axisTicks: {
           show: false,
         },
         labels: {
-          show: false
-        }
+          show: false,
+        },
       },
-      // title: {
-      //   text: title,
-      //   align: 'center',
-      //   style: {
-      //     color: '#444',
-      //     fontSize: '20px',
-      //     fontFamily: 'sans-serif',
-      //     fontWeight: 'normal'
-      //   }
-      // }
     },
   };
 
   return (
-    <ReactApexChart options={config.options} series={config.series} type="bar" style={{ width: '95%', height: '70%'}} />
-  )
-}
+    <ReactApexChart options={config.options} series={config.series} type="bar" style={{ width: '95%', height: '70%' }} />
+  );
+};
 
 export default CustomChart;

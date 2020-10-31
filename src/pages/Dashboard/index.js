@@ -15,19 +15,18 @@ import TopCustomers from '../../components/TopCustomers';
 import { Filter, ReportsArea, SearchHelp } from './styles';
 
 const Dashboard = () => {
-
   const [starts, setStarts] = useState('2020-10-01');
   const [finishes, setFinishes] = useState('2020-10-31');
   const [fetch, setFetch] = useState(false);
 
-  const setDateToFetch = e => {
+  const setDateToFetch = (e) => {
     setFetch(false);
-    if (e.target.id === "starts") {
+    if (e.target.id === 'starts') {
       setStarts(e.target.value);
     } else {
       setFinishes(e.target.value);
     }
-  }
+  };
 
   const fetchData = () => {
     if (starts && finishes) {
@@ -37,10 +36,10 @@ const Dashboard = () => {
         title: 'Atenção!',
         text: 'Preencha as datas corretamente.',
         icon: 'error',
-        confirmButtonText: 'Ok'
+        confirmButtonText: 'Ok',
       });
     }
-  }
+  };
 
   return (
     <div className="global-container">
@@ -53,11 +52,13 @@ const Dashboard = () => {
           <Link to="/sales/add">Adicionar</Link>
         </div>
         <Filter>
-          <label>De:
-            <input type="date" id="starts" onChange={setDateToFetch} defaultValue={starts}></input>
+          <label htmlFor="starts">
+            De:
+            <input type="date" id="starts" onChange={setDateToFetch} defaultValue={starts} />
           </label>
-          <label>Até:
-            <input type="date" id="finishes" onChange={setDateToFetch} defaultValue={finishes}></input>
+          <label htmlFor="finishes">
+            Até:
+            <input type="date" id="finishes" onChange={setDateToFetch} defaultValue={finishes} />
           </label>
           <button type="button" className="btn-primary" onClick={fetchData}>Pesquisar</button>
         </Filter>
@@ -90,7 +91,7 @@ const Dashboard = () => {
         </ReportsArea>
       </Main>
     </div>
-  )
+  );
 };
 
 export default Dashboard;

@@ -14,13 +14,51 @@ import { api } from '../../services/api';
 import { colors } from '../../styles/global';
 
 const ProductsFormPage = () => {
-
   const { register, handleSubmit } = useForm();
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  const validateForm = async (product) => {
+  const submitForm = async (product) => {
+    setLoading(true);
 
+    try {
+      const response = await api.post('/products/create', product);
+
+      if (response.status === 200) {
+        Swal.fire({
+          title: 'Produto cadastrado!',
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonColor: colors.confirm,
+          confirmButtonText: 'Ok',
+        }).then(() => {
+          setLoading(false);
+
+          history.push('/products');
+        });
+
+        return;
+      }
+
+      Swal.fire({
+        title: 'Atenção!',
+        text: 'Não foi possível adicionar o produto. Tente novamente mais tarde.',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      });
+    } catch (err) {
+      Swal.fire({
+        title: 'Atenção!',
+        text: 'Não foi possível adicionar o produto. Tente novamente mais tarde.',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      });
+    }
+
+    setLoading(false);
+  };
+
+  const validateForm = async (product) => {
     const schema = yup.object().shape({
       name: yup.string().required(),
       description: yup.string().required(),
@@ -35,75 +73,18 @@ const ProductsFormPage = () => {
     });
 
     schema.validate(product).then(async () => {
-
       await submitForm(product);
-
-    }).catch(err => {
-
+    }).catch((err) => {
       Swal.fire({
         title: 'Atenção!',
         text: 'Preencha todos os campos corretamente.',
         icon: 'error',
-        confirmButtonText: 'Ok'
+        confirmButtonText: 'Ok',
       });
 
       console.log(err);
-
     });
-
-  }
-
-  const submitForm = async (product) => {
-
-    setLoading(true);
-
-    try {
-
-      const response = await api.post('/products/create', product);
-
-      if (response.status === 200) {
-
-        Swal.fire({
-          title: 'Produto cadastrado!',
-          icon: 'success',
-          showCancelButton: false,
-          confirmButtonColor: colors.confirm,
-          confirmButtonText: 'Ok'
-        }).then(() => {
-        
-          setLoading(false);
-
-          history.push('/products');
-
-        });
-
-        return;
-
-      } else {
-
-        Swal.fire({
-          title: 'Atenção!',
-          text: 'Não foi possível adicionar o produto. Tente novamente mais tarde.',
-          icon: 'error',
-          confirmButtonText: 'Ok'
-        });
-
-      }
-
-    } catch (err) {
-
-      Swal.fire({
-        title: 'Atenção!',
-        text: 'Não foi possível adicionar o produto. Tente novamente mais tarde.',
-        icon: 'error',
-        confirmButtonText: 'Ok'
-      });
-
-    }
-
-    setLoading(false);
-
-  }
+  };
 
   return (
     <div className="global-container">
@@ -134,12 +115,12 @@ const ProductsFormPage = () => {
               <option value="A">Ativo</option>
               <option value="I">Suspenso</option>
             </select>
-            <button>Adicionar</button>
+            <button type="submit">Adicionar</button>
           </CustomForm>
         )}
       </Main>
     </div>
-  )
+  );
 };
 
 export default ProductsFormPage;
