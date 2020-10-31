@@ -100,7 +100,6 @@ const Products = () => {
                     <th>Custo</th>
                     <th>Venda</th>
                     <th>Qtd estoque</th>
-                    <th>Qtd loja</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -127,11 +126,6 @@ const Products = () => {
                       <td className="center">
                         <QtdBadge qtd={product.stock_quantity}>
                           {product.stock_quantity}
-                        </QtdBadge>
-                      </td>
-                      <td className="center">
-                        <QtdBadge qtd={product.store_quantity}>
-                          {product.store_quantity}
                         </QtdBadge>
                       </td>
                     </tr>
