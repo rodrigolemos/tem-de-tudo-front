@@ -15,7 +15,6 @@ import TableFooter from '@material-ui/core/TableFooter';
 import TablePagination from '@material-ui/core/TablePagination';
 import Paper from '@material-ui/core/Paper';
 
-
 import SidePanel from '../../components/SidePanel';
 import UserPanel from '../../components/UserPanel';
 import Main from '../../components/Main';
@@ -148,7 +147,7 @@ const Products = () => {
                     <TableRow>
                       <TableCell>Remover</TableCell>
                       <TableCell>Editar</TableCell>
-                      <TableCell>Nome</TableCell>
+                      <TableCell>Produto</TableCell>
                       <TableCell>Marca</TableCell>
                       <TableCell>Fornecedor</TableCell>
                       <TableCell>Custo</TableCell>
