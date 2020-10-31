@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { IoIosRemoveCircleOutline } from 'react-icons/io';
+import { FaEdit } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 
 import SidePanel from '../../components/SidePanel';
@@ -12,6 +13,8 @@ import Loading from '../../components/Loading';
 import { api } from '../../services/api';
 import formatValue from '../../utils/formatValue';
 import { colors } from '../../styles/global';
+
+import { QtdBadge } from './styles';
 
 const Products = () => {
   const [loading, setLoading] = useState(false);
@@ -85,49 +88,62 @@ const Products = () => {
         {loading ? (
           <Loading />
         ) : (
-          products.length > 0 ? (
-            <table className="custom-table">
-              <thead>
-                <tr>
-                  <th aria-label="control" />
-                  <th>ID</th>
-                  <th>Nome</th>
-                  <th>Marca</th>
-                  <th>Fornecedor</th>
-                  <th>Custo</th>
-                  <th>Venda</th>
-                  <th>Qtd estoque</th>
-                  <th>Qtd loja</th>
-                </tr>
-              </thead>
-              <tbody>
-                {products.map((product) => (
-                  <tr key={product.id}>
-                    <td className="center">
-                      <IoIosRemoveCircleOutline
-                        title="Remover produto"
-                        className="icon-remove"
-                        onClick={() => removeProduct(product.id)}
-                      />
-                    </td>
-                    <td className="center">{product.id}</td>
-                    <td className="center">{product.name}</td>
-                    <td className="center">{product.brand}</td>
-                    <td className="center">{product.provider}</td>
-                    <td className="center">{formatValue(product.cost_price)}</td>
-                    <td className="center">{formatValue(product.sale_price)}</td>
-                    <td className="center">{product.stock_quantity}</td>
-                    <td className="center">{product.store_quantity}</td>
+            products.length > 0 ? (
+              <table className="custom-table">
+                <thead>
+                  <tr>
+                    <th>Remover</th>
+                    <th>Editar</th>
+                    <th>Nome</th>
+                    <th>Marca</th>
+                    <th>Fornecedor</th>
+                    <th>Custo</th>
+                    <th>Venda</th>
+                    <th>Qtd estoque</th>
+                    <th>Qtd loja</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          ) : (
-            <DataNotFound>
-              <h2>Nenhum produto encontrado.</h2>
-            </DataNotFound>
-          )
-        )}
+                </thead>
+                <tbody>
+                  {products.map((product) => (
+                    <tr key={product.id}>
+                      <td className="center">
+                        <IoIosRemoveCircleOutline
+                          title="Remover produto"
+                          className="icon-remove"
+                          onClick={() => removeProduct(product.id)}
+                        />
+                      </td>
+                      <td className="center">
+                        <FaEdit
+                          title="Editar"
+                          className="icon-table"
+                        />
+                      </td>
+                      <td className="center">{product.name}</td>
+                      <td className="center">{product.brand}</td>
+                      <td className="center">{product.provider}</td>
+                      <td className="center">{formatValue(product.cost_price)}</td>
+                      <td className="center">{formatValue(product.sale_price)}</td>
+                      <td className="center">
+                        <QtdBadge qtd={product.stock_quantity}>
+                          {product.stock_quantity}
+                        </QtdBadge>
+                      </td>
+                      <td className="center">
+                        <QtdBadge qtd={product.store_quantity}>
+                          {product.store_quantity}
+                        </QtdBadge>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+                <DataNotFound>
+                  <h2>Nenhum produto encontrado.</h2>
+                </DataNotFound>
+              )
+          )}
       </Main>
     </div>
   );

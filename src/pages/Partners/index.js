@@ -85,43 +85,41 @@ const Partners = () => {
         {loading ? (
           <Loading />
         ) : (
-          partners.length > 0 ? (
-            <table className="custom-table">
-              <thead>
-                <tr>
-                  <th aria-label="control" />
-                  <th>ID</th>
-                  <th>Nome</th>
-                  <th>Endereço</th>
-                  <th>Telefone</th>
-                  <th>Tipo</th>
-                </tr>
-              </thead>
-              <tbody>
-                {partners.map((partner) => (
-                  <tr key={partner.id}>
-                    <td className="center">
-                      <IoIosRemoveCircleOutline
-                        title="Remover parceiro"
-                        className="icon-remove"
-                        onClick={() => removePartner(partner.id)}
-                      />
-                    </td>
-                    <td className="center">{partner.id}</td>
-                    <td className="center">{partner.name}</td>
-                    <td>{partner.address}</td>
-                    <td className="center">{partner.phone}</td>
-                    <td className="center">{formatPartner(partner.type)}</td>
+            partners.length > 0 ? (
+              <table className="custom-table">
+                <thead>
+                  <tr>
+                    <th aria-label="control" />
+                    <th>Nome</th>
+                    <th>Endereço</th>
+                    <th>Telefone</th>
+                    <th>Tipo</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          ) : (
-            <DataNotFound>
-              <h2>Nenhum parceiro encontrado.</h2>
-            </DataNotFound>
-          )
-        )}
+                </thead>
+                <tbody>
+                  {partners.map((partner) => (
+                    <tr key={partner.id}>
+                      <td className="center">
+                        <IoIosRemoveCircleOutline
+                          title="Remover parceiro"
+                          className="icon-remove"
+                          onClick={() => removePartner(partner.id)}
+                        />
+                      </td>
+                      <td className="center">{partner.name}</td>
+                      <td>{partner.address}</td>
+                      <td className="center">{partner.phone}</td>
+                      <td className="center">{formatPartner(partner.type)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+                <DataNotFound>
+                  <h2>Nenhum parceiro encontrado.</h2>
+                </DataNotFound>
+              )
+          )}
       </Main>
     </div>
   );

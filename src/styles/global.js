@@ -8,6 +8,9 @@ export const colors = {
   fontSecondary: '#EEE',
   confirm: '#3085D6',
   cancel: '#D33',
+  warning: '#F7BF3D',
+  danger: '#DE3E44',
+  success: '#1BA345'
 };
 
 export default createGlobalStyle`
@@ -192,6 +195,10 @@ export default createGlobalStyle`
       text-align: center;
     }
 
+    .icon-table {
+      cursor: pointer;
+    }
+
     .icon-remove {
       cursor: pointer;
       color: #DE3E44;
@@ -207,5 +214,8 @@ export default createGlobalStyle`
     --font-primary-dark: ${darken(0.3, colors.fontPrimary)};
     --font-secondary: ${colors.fontSecondary};
     --font-secondary-dark: ${darken(0.3, colors.fontSecondary)};
+    --warning: ${colors.warning};
+    --danger: ${colors.danger};
+    --success: ${colors.success};
   }
 `;
