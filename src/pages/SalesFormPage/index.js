@@ -36,7 +36,12 @@ const SalesFormPage = () => {
         }
       }
     } catch (err) {
-      console.log(err);
+      Swal.fire({
+        title: 'Atenção!',
+        text: 'Não foi possível recuperar as informações de venda. Tente novamente mais tarde.',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      });
     }
 
     setLoading(false);
@@ -119,16 +124,15 @@ const SalesFormPage = () => {
         confirmButtonText: 'Ok',
       });
 
-      console.log(response);
     } catch (err) {
+
       Swal.fire({
         title: 'Atenção!',
-        text: 'Não foi possível adicionar a venda. Tente novamente mais tarde.',
+        text: err.response.data.message,
         icon: 'error',
         confirmButtonText: 'Ok',
       });
 
-      console.log(err);
     }
 
     setLoading(false);
@@ -153,8 +157,6 @@ const SalesFormPage = () => {
         icon: 'error',
         confirmButtonText: 'Ok',
       });
-
-      console.log(err);
     });
   };
 
@@ -171,22 +173,22 @@ const SalesFormPage = () => {
         {loading ? (
           <Loading />
         ) : (
-          <CustomForm onSubmit={handleSubmit(validateForm)}>
-            <h2>Informações de Venda</h2>
-            <SelectAPI forwardRef={register} type="text" apiName="partners" name="customer" filterType="customer" placeholder="Cliente" />
-            <SelectAPI forwardRef={register} type="text" apiName="partners" name="seller" filterType="seller" placeholder="Vendedor" />
+            <CustomForm onSubmit={handleSubmit(validateForm)}>
+              <h2>Informações de Venda</h2>
+              <SelectAPI forwardRef={register} type="text" apiName="partners" name="customer" filterType="customer" placeholder="Cliente" />
+              <SelectAPI forwardRef={register} type="text" apiName="partners" name="seller" filterType="seller" placeholder="Vendedor" />
 
-            <h3>Produto 1</h3>
-            <SelectAPI forwardRef={register} type="text" apiName="products" name="product" placeholder="Produto" />
-            <input ref={register} type="number" name="quantity" placeholder="Quantidade" min={1} defaultValue={1} />
+              <h3>Produto 1</h3>
+              <SelectAPI forwardRef={register} type="text" apiName="products" name="product" placeholder="Produto" />
+              <input ref={register} type="number" name="quantity" placeholder="Quantidade" min={1} defaultValue={1} />
 
-            <h3>Produto 2</h3>
-            <SelectAPI forwardRef={register} type="text" apiName="products" name="product_2" placeholder="Produto" />
-            <input ref={register} type="number" name="quantity_2" placeholder="Quantidade" min={0} defaultValue={0} />
+              <h3>Produto 2</h3>
+              <SelectAPI forwardRef={register} type="text" apiName="products" name="product_2" placeholder="Produto" />
+              <input ref={register} type="number" name="quantity_2" placeholder="Quantidade" min={0} defaultValue={0} />
 
-            <button type="submit">Adicionar</button>
-          </CustomForm>
-        )}
+              <button type="submit">Adicionar</button>
+            </CustomForm>
+          )}
       </Main>
     </div>
   );
