@@ -5,7 +5,7 @@
 - [x] Remove id column
 - [x] Products - Create a badge for quantity in stock/store
 - [ ] Create a button/modal for more information
-- [ ] Pagination
+- [x] Pagination
 
 ### Forms
 

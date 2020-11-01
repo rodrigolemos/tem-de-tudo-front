@@ -4,16 +4,18 @@ import { IoIosRemoveCircleOutline } from 'react-icons/io';
 import { FaEdit } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 
-import { withStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import TableFooter from '@material-ui/core/TableFooter';
-import TablePagination from '@material-ui/core/TablePagination';
-import Paper from '@material-ui/core/Paper';
+import {
+  withStyles,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  TableFooter,
+  TablePagination,
+  Paper
+} from '@material-ui/core';
 
 import SidePanel from '../../components/SidePanel';
 import UserPanel from '../../components/UserPanel';
@@ -30,12 +32,14 @@ import { QtdBadge } from './styles';
 const StyledTable = withStyles((theme) => ({
   root: {
     '& th': {
+      fontWeight: 'bold',
       backgroundColor: colors.bgPrimary,
       color: '#FFF'
     },
     '& *': {
       fontSize: 15,
-      textAlign: 'center'
+      textAlign: 'center',
+      color: '#555'
     },
   }
 }))(Table);
@@ -189,7 +193,7 @@ const Products = () => {
                   <TableFooter>
                     <TableRow>
                       <TablePagination
-                        rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+                        rowsPerPageOptions={[5, 10]}
                         labelRowsPerPage="Produtos por página"
                         colSpan={8}
                         count={products.length}

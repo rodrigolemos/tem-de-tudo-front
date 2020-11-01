@@ -6,7 +6,7 @@ export const QtdBadge = styled.span`
   transition: all .1s ease-in-out;
 
   ${({ qtd }) => qtd <= 3 && css`
-    color: #FFF;
+    color: #FFF !important;
     background-color: var(--danger);
   `}
 
