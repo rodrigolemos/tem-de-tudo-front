@@ -194,15 +194,20 @@ export default createGlobalStyle`
     .center {
       text-align: center;
     }
+  }
 
-    .icon-table {
-      cursor: pointer;
-    }
+  .icon-table {
+    cursor: pointer;
+  }
 
-    .icon-remove {
-      cursor: pointer;
-      color: #DE3E44;
-    }
+  .icon-edit {
+    cursor: pointer;
+    color: var(--bg-secondary-dark);
+  }
+
+  .icon-remove {
+    cursor: pointer;
+    color: var(--danger);
   }
 
   :root {

@@ -39,7 +39,7 @@ const StyledTable = withStyles((theme) => ({
     '& *': {
       fontSize: 15,
       textAlign: 'center',
-      color: '#555'
+      // color: '#555'
     },
   }
 }))(Table);
@@ -168,13 +168,14 @@ const Products = () => {
                         <TableCell className="center">
                           <IoIosRemoveCircleOutline
                             title="Remover produto"
+                            className="icon-remove"
                             onClick={() => removeProduct(product.id)}
                           />
                         </TableCell>
                         <TableCell className="center">
                           <FaEdit
                             title="Editar"
-                            className="icon-table"
+                            className="icon-edit"
                           />
                         </TableCell>
                         <TableCell>{product.name}</TableCell>

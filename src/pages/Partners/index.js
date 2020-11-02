@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { IoIosRemoveCircleOutline } from 'react-icons/io';
+import { FaEdit } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 
 import {
@@ -36,7 +37,7 @@ const StyledTable = withStyles((theme) => ({
     '& *': {
       fontSize: 15,
       textAlign: 'center',
-      color: '#555'
+      // color: '#555'
     },
   }
 }))(Table);
@@ -147,6 +148,7 @@ const Partners = () => {
                   <TableHead>
                     <TableRow>
                       <TableCell>Remover</TableCell>
+                      <TableCell>Editar</TableCell>
                       <TableCell>Nome</TableCell>
                       <TableCell>Endereço</TableCell>
                       <TableCell>Telefone</TableCell>
@@ -164,6 +166,12 @@ const Partners = () => {
                             title="Remover parceiro"
                             className="icon-remove"
                             onClick={() => removePartner(partner.id)}
+                          />
+                        </TableCell>
+                        <TableCell className="center">
+                          <FaEdit
+                            title="Editar"
+                            className="icon-edit"
                           />
                         </TableCell>
                         <TableCell className="center">{partner.name}</TableCell>
