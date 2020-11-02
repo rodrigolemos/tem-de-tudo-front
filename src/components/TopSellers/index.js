@@ -37,34 +37,34 @@ const TopSellers = ({ starts, finishes }) => {
       {loading ? (
         <Loading />
       ) : (
-        topSellers.length > 0 ? (
-          <>
-            <h2>Melhores Vendedores</h2>
-            <table className="custom-table">
-              <thead>
-                <tr>
-                  <th>Nome</th>
-                  <th>Total Vendido</th>
-                </tr>
-              </thead>
-              <tbody>
-                {topSellers.map((seller) => (
-                  <tr key={seller.id}>
-                    <td>{seller.name}</td>
-                    <td className="center">
-                      <span className="simple-badge">{formatValue(seller.total)}</span>
-                    </td>
+          topSellers.length > 0 ? (
+            <>
+              <h2>Melhores Vendedores</h2>
+              <table className="custom-table">
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th>Total Vendido</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </>
-        ) : (
-          <DataNotFound>
-            <h2>Nenhum vendedor encontrado.</h2>
-          </DataNotFound>
-        )
-      )}
+                </thead>
+                <tbody>
+                  {topSellers.map((seller, i) => (
+                    <tr key={i}>
+                      <td>{seller.name}</td>
+                      <td className="center">
+                        <span className="simple-badge">{formatValue(seller.total)}</span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </>
+          ) : (
+              <DataNotFound>
+                <h2>Nenhum vendedor encontrado.</h2>
+              </DataNotFound>
+            )
+        )}
     </>
   );
 };

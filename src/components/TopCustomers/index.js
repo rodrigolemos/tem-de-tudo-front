@@ -37,34 +37,34 @@ const TopCustomers = ({ starts, finishes }) => {
       {loading ? (
         <Loading />
       ) : (
-        topCustommers.length > 0 ? (
-          <>
-            <h2>Melhores Clientes</h2>
-            <table className="custom-table">
-              <thead>
-                <tr>
-                  <th>Nome</th>
-                  <th>Total Comprado</th>
-                </tr>
-              </thead>
-              <tbody>
-                {topCustommers.map((customer) => (
-                  <tr key={customer.id}>
-                    <td>{customer.name}</td>
-                    <td className="center">
-                      <span className="simple-badge">{formatValue(customer.total)}</span>
-                    </td>
+          topCustommers.length > 0 ? (
+            <>
+              <h2>Melhores Clientes</h2>
+              <table className="custom-table">
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th>Total Comprado</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </>
-        ) : (
-          <DataNotFound>
-            <h2>Nenhum cliente encontrado.</h2>
-          </DataNotFound>
-        )
-      )}
+                </thead>
+                <tbody>
+                  {topCustommers.map((customer, i) => (
+                    <tr key={i}>
+                      <td>{customer.name}</td>
+                      <td className="center">
+                        <span className="simple-badge">{formatValue(customer.total)}</span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </>
+          ) : (
+              <DataNotFound>
+                <h2>Nenhum cliente encontrado.</h2>
+              </DataNotFound>
+            )
+        )}
     </>
   );
 };
