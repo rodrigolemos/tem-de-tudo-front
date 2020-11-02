@@ -36,8 +36,7 @@ const StyledTable = withStyles((theme) => ({
     },
     '& *': {
       fontSize: 15,
-      textAlign: 'center',
-      // color: '#555'
+      textAlign: 'center'
     },
   }
 }))(Table);
@@ -169,10 +168,12 @@ const Partners = () => {
                           />
                         </TableCell>
                         <TableCell className="center">
-                          <FaEdit
-                            title="Editar"
-                            className="icon-edit"
-                          />
+                          <Link to={`/partner/${partner.id}`}>
+                            <FaEdit
+                              title="Editar"
+                              className="icon-edit"
+                            />
+                          </Link>
                         </TableCell>
                         <TableCell className="center">{partner.name}</TableCell>
                         <TableCell>{partner.address}</TableCell>

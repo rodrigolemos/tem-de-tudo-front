@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import Swal from 'sweetalert2';
@@ -14,15 +14,60 @@ import { api } from '../../services/api';
 import { colors } from '../../styles/global';
 
 const PartnersFormPage = () => {
-  const { register, handleSubmit } = useForm();
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+  const { register, handleSubmit } = useForm();
+  const [formInfo, setFormInfo] = useState({
+    name: '',
+    address: '',
+    phone: '',
+    type: '',
+    status: ''
+  });
+
+  const { id } = useParams();
+
+  const fetchPartner = async (id) => {
+    try {
+      const response = await api.get(`/partners/list/${id}`);
+
+      if (response.status === 200) {
+        setFormInfo(response.data[0])
+      }
+
+    } catch (err) {
+      Swal.fire({
+        title: 'Não foi possível listar os parceiros. Tente novamente mais tarde.',
+        icon: 'warning',
+        confirmButtonText: 'Ok',
+      });
+    }
+  }
+
+  useEffect(() => {
+
+    if (typeof id !== 'undefined') {
+      fetchPartner(id);
+    }
+
+  }, [id]);
 
   const submitForm = async (partner) => {
     setLoading(true);
 
     try {
-      const response = await api.post('/partners/create', partner);
+
+      let response = {};
+
+      if (typeof id !== 'undefined') {
+
+        response = await api.put(`/partners/remove/${id}`, partner);
+
+      } else {
+
+        response = await api.post('/partners/create', partner);
+
+      }
 
       if (response.status === 200) {
         Swal.fire({
@@ -94,20 +139,22 @@ const PartnersFormPage = () => {
         ) : (
             <CustomForm onSubmit={handleSubmit(validateForm)}>
               <h2>Informações do Parceiro</h2>
-              <input ref={register} type="text" name="name" placeholder="Nome do Parceiro" />
-              <input ref={register} type="text" name="address" placeholder="Endereço" />
-              <input ref={register} type="text" name="phone" placeholder="Telefone" />
-              <select ref={register} name="type" defaultValue="">
+              <input ref={register} type="text" name="name" placeholder="Nome do Parceiro" defaultValue={formInfo.name} />
+              <input ref={register} type="text" name="address" placeholder="Endereço" defaultValue={formInfo.address} />
+              <input ref={register} type="text" name="phone" placeholder="Telefone" defaultValue={formInfo.phone} />
+              <select ref={register} name="type" defaultValue={formInfo.type}>
                 <option value="" disabled>Selecione</option>
                 <option value="customer">Cliente</option>
                 <option value="seller">Vendedor</option>
               </select>
-              <select ref={register} name="status" defaultValue="">
+              <select ref={register} name="status" defaultValue={formInfo.status}>
                 <option value="" disabled>Selecione</option>
                 <option value="A">Ativo</option>
                 <option value="I">Suspenso</option>
               </select>
-              <button type="submit">Adicionar</button>
+              <button type="submit">
+                {typeof id !== 'undefined' ? 'Atualizar' : 'Adicionar'}
+              </button>
             </CustomForm>
           )}
       </Main>
