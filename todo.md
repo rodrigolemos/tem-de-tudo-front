@@ -7,6 +7,11 @@
 - [ ] Create a button/modal for more information
 - [x] Pagination
 
+### Dashboard
+
+- [ ] Index must fetch today's information
+- [ ] Sales and profit in the same chart
+
 ### Forms
 
 - [ ] Create edit forms
@@ -21,5 +26,8 @@
 
 ### Performance/behavior
 
-- [ ] Index must fetch today's information
 - [ ] Store sales reports in local storage
+
+### Improvements
+
+- [ ] Login screen

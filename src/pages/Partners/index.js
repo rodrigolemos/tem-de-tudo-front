@@ -137,7 +137,7 @@ const Partners = () => {
       <Main>
         <div className="content-title">
           <h1>Parceiros</h1>
-          <Link to="/partners/add">Adicionar</Link>
+          <Link to="/partner">Adicionar</Link>
         </div>
         {loading ? (
           <Loading />

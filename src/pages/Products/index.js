@@ -139,7 +139,7 @@ const Products = () => {
       <Main>
         <div className="content-title">
           <h1>Produtos</h1>
-          <Link to="/products/add">Adicionar</Link>
+          <Link to="/product">Adicionar</Link>
         </div>
         {loading ? (
           <Loading />
