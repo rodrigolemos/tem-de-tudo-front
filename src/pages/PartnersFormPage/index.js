@@ -28,6 +28,7 @@ const PartnersFormPage = () => {
   const { id } = useParams();
 
   const fetchPartner = async (id) => {
+    setLoading(true);
     try {
       const response = await api.get(`/partners/list/${id}`);
 
@@ -42,6 +43,7 @@ const PartnersFormPage = () => {
         confirmButtonText: 'Ok',
       });
     }
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -123,6 +125,7 @@ const PartnersFormPage = () => {
       });
     });
   };
+
 
   return (
     <div className="global-container">
