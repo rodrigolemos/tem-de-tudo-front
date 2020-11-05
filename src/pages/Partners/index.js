@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { IoIosRemoveCircleOutline } from 'react-icons/io';
 import { FaEdit } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 
@@ -25,7 +24,10 @@ import Loading from '../../components/Loading';
 
 import { api } from '../../services/api';
 import formatPartner from '../../utils/formatParner';
+import formatStatus from '../../utils/formatStatus';
 import { colors } from '../../styles/global';
+
+import { StatusBadge } from './styles';
 
 const StyledTable = withStyles((theme) => ({
   root: {
@@ -89,45 +91,6 @@ const Partners = () => {
     fetchPartners();
   }, []);
 
-  const removePartner = async (id) => {
-    Swal.fire({
-      title: 'Deseja realmente remover o parceiro?',
-      text: 'O histórico de vendas não será afetado',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: colors.confirm,
-      cancelButtonColor: colors.cancel,
-      confirmButtonText: 'Sim',
-      cancelButtonText: 'Não',
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        setLoading(true);
-
-        try {
-          const response = await api.put(`/partners/remove/${id}`);
-
-          if (response.status === 200) {
-            setPartners(...[partners.filter((partner) => partner.id !== id)]);
-
-            Swal.fire({
-              title: 'Parceiro removido!',
-              icon: 'success',
-              confirmButtonText: 'Ok',
-            });
-          }
-        } catch (err) {
-          Swal.fire({
-            title: 'Não foi possível remover o parceiro. Tente novamente mais tarde.',
-            icon: 'warning',
-            confirmButtonText: 'Ok',
-          });
-        }
-
-        setLoading(false);
-      }
-    });
-  };
-
   return (
     <div className="global-container">
       <SidePanel>
@@ -146,12 +109,12 @@ const Partners = () => {
                 <StyledTable aria-label="collapsible table">
                   <TableHead>
                     <TableRow>
-                      <TableCell>Remover</TableCell>
                       <TableCell>Editar</TableCell>
                       <TableCell>Nome</TableCell>
                       <TableCell>Endereço</TableCell>
                       <TableCell>Telefone</TableCell>
                       <TableCell>Tipo</TableCell>
+                      <TableCell>Status</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -160,13 +123,6 @@ const Partners = () => {
                       : partners
                     ).map((partner) => (
                       <StyledTableRow key={partner.id}>
-                        <TableCell className="center">
-                          <IoIosRemoveCircleOutline
-                            title="Remover parceiro"
-                            className="icon-remove"
-                            onClick={() => removePartner(partner.id)}
-                          />
-                        </TableCell>
                         <TableCell className="center">
                           <Link to={`/partner/${partner.id}`}>
                             <FaEdit
@@ -179,6 +135,11 @@ const Partners = () => {
                         <TableCell>{partner.address}</TableCell>
                         <TableCell className="center">{partner.phone}</TableCell>
                         <TableCell className="center">{formatPartner(partner.type)}</TableCell>
+                        <TableCell>
+                          <StatusBadge status={partner.status}>
+                            {formatStatus(partner.status)}
+                          </StatusBadge>
+                        </TableCell>
                       </StyledTableRow>
                     ))}
                   </TableBody>

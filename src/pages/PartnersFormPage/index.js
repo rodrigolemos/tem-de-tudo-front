@@ -63,7 +63,9 @@ const PartnersFormPage = () => {
 
       if (typeof id !== 'undefined') {
 
-        response = await api.put(`/partners/remove/${id}`, partner);
+        partner.id = id;
+
+        response = await api.put('/partners/update', partner);
 
       } else {
 
@@ -153,7 +155,7 @@ const PartnersFormPage = () => {
               <select ref={register} name="status" defaultValue={formInfo.status}>
                 <option value="" disabled>Selecione</option>
                 <option value="A">Ativo</option>
-                <option value="I">Suspenso</option>
+                <option value="I">Inativo</option>
               </select>
               <button type="submit">
                 {typeof id !== 'undefined' ? 'Atualizar' : 'Adicionar'}
