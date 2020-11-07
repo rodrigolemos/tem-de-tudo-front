@@ -10,14 +10,14 @@
 ### Dashboard
 
 - [ ] Index must fetch today's information
-- [ ] Sales and profit in the same chart
+- [x] Sales and profit in the same chart
 
 ### Forms
 
 - [x] Create edit forms
 - [x] Redesign CSS
 - [ ] Input masks
-- [ ] Fix select loading message
+- [x] Fix select loading message
 
 ### API
 
@@ -33,3 +33,4 @@
 
 - [ ] Login screen
 - [ ] Product image upload
+- [ ] Sales - Add product

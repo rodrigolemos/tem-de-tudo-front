@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineFileSearch } from 'react-icons/ai';
 import Swal from 'sweetalert2';
@@ -14,8 +14,9 @@ import TopCustomers from '../../components/TopCustomers';
 import { Filter, ReportsArea, SearchHelp } from './styles';
 
 const Dashboard = () => {
-  const [starts, setStarts] = useState('2020-10-01');
-  const [finishes, setFinishes] = useState('2020-10-31');
+  const initialDate = new Date().toISOString().split('T')[0];
+  const [starts, setStarts] = useState(initialDate);
+  const [finishes, setFinishes] = useState(initialDate);
   const [fetch, setFetch] = useState(false);
 
   const setDateToFetch = (e) => {
@@ -40,6 +41,10 @@ const Dashboard = () => {
     }
   };
 
+  useEffect(() => {
+    fetchData();
+  });
+
   return (
     <div className="global-container">
       <SidePanel>
@@ -59,7 +64,6 @@ const Dashboard = () => {
             Até:
             <input type="date" id="finishes" onChange={setDateToFetch} defaultValue={finishes} />
           </label>
-          <button type="button" className="btn-primary" onClick={fetchData}>Pesquisar</button>
         </Filter>
         <ReportsArea>
           {!fetch ? (

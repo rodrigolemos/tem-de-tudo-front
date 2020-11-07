@@ -38,20 +38,22 @@ const SelectAPI = ({ ...props }) => {
 
   return (
     <>
-      {loading ? (
-        <h5>Carregando...</h5>
-      ) : (
-        <select ref={forwardRef} name={name} defaultValue="">
+      <select ref={forwardRef} name={name} defaultValue="">
+        {loading ? (
           <option value="" disabled>
-            Selecione o
-            {' '}
-            {placeholder}
+            Carregando...
           </option>
-          {items.map((item) => (
-            <option key={item.id} value={item.id}>{item.name}</option>
-          ))}
-        </select>
-      )}
+        ) : (
+            <>
+              <option value="" disabled>
+                Selecione o {placeholder}
+              </option>
+              {items.map((item) => (
+                <option key={item.id} value={item.id}>{item.name}</option>
+              ))}
+            </>
+          )}
+      </select>
     </>
   );
 };
