@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { IoIosRemoveCircleOutline } from 'react-icons/io';
 import { FaEdit } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 
@@ -92,45 +91,6 @@ const Products = () => {
     fetchProducts();
   }, []);
 
-  const removeProduct = async (id) => {
-    Swal.fire({
-      title: 'Deseja realmente remover o produto?',
-      text: 'O histórico de vendas não será afetado',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: colors.confirm,
-      cancelButtonColor: colors.cancel,
-      confirmButtonText: 'Sim',
-      cancelButtonText: 'Não',
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        setLoading(true);
-
-        try {
-          const response = await api.put(`/products/remove/${id}`);
-
-          if (response.status === 200) {
-            setProducts(...[products.filter((product) => product.id !== id)]);
-
-            Swal.fire({
-              title: 'Produto removido!',
-              icon: 'success',
-              confirmButtonText: 'Ok',
-            });
-          }
-        } catch (err) {
-          Swal.fire({
-            title: 'Não foi possível remover o produto. Tente novamente mais tarde.',
-            icon: 'error',
-            confirmButtonText: 'Ok',
-          });
-        }
-
-        setLoading(false);
-      }
-    });
-  };
-
   return (
     <div className="global-container">
       <SidePanel>
@@ -149,7 +109,6 @@ const Products = () => {
                 <StyledTable aria-label="collapsible table">
                   <TableHead>
                     <TableRow>
-                      <TableCell>Remover</TableCell>
                       <TableCell>Editar</TableCell>
                       <TableCell>Produto</TableCell>
                       <TableCell>Marca</TableCell>
@@ -166,17 +125,12 @@ const Products = () => {
                     ).map((product) => (
                       <StyledTableRow key={product.id}>
                         <TableCell className="center">
-                          <IoIosRemoveCircleOutline
-                            title="Remover produto"
-                            className="icon-remove"
-                            onClick={() => removeProduct(product.id)}
-                          />
-                        </TableCell>
-                        <TableCell className="center">
-                          <FaEdit
-                            title="Editar"
-                            className="icon-edit"
-                          />
+                          <Link to={`/product/${product.id}`}>
+                            <FaEdit
+                              title="Editar"
+                              className="icon-edit"
+                            />
+                          </Link>
                         </TableCell>
                         <TableCell>{product.name}</TableCell>
                         <TableCell>{product.brand}</TableCell>

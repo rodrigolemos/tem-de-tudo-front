@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import Swal from 'sweetalert2';
@@ -17,12 +17,66 @@ const ProductsFormPage = () => {
   const { register, handleSubmit } = useForm();
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+  const [formInfo, setFormInfo] = useState({
+    name: '',
+    description: '',
+    brand: '',
+    provider: '',
+    classification: '',
+    cost_price: '',
+    sale_price: '',
+    stock_quantity: '',
+    store_quantity: '',
+    status: ''
+  });
+
+  const { id } = useParams();
+
+  const fetchProduct = async (id) => {
+    setLoading(true);
+    try {
+      const response = await api.get(`/products/list/${id}`);
+
+      if (response.status === 200) {
+        setFormInfo(response.data[0])
+      }
+
+    } catch (err) {
+      Swal.fire({
+        title: 'Não foi possível listar os parceiros. Tente novamente mais tarde.',
+        icon: 'warning',
+        confirmButtonText: 'Ok',
+      });
+    }
+    setLoading(false);
+  }
+
+  useEffect(() => {
+
+    if (typeof id !== 'undefined') {
+      fetchProduct(id);
+    }
+
+  }, [id]);
 
   const submitForm = async (product) => {
     setLoading(true);
 
     try {
-      const response = await api.post('/products/create', product);
+
+      let response = {};
+
+      if (typeof id !== 'undefined') {
+
+        product.id = id;
+
+        response = await api.put('/products/update', product);
+
+      } else {
+
+        response = await api.post('/products/create', product);
+
+      }
 
       if (response.status === 200) {
         Swal.fire({
@@ -99,21 +153,23 @@ const ProductsFormPage = () => {
         ) : (
             <CustomForm onSubmit={handleSubmit(validateForm)}>
               <h2>Informações do Produto</h2>
-              <input ref={register} type="text" name="name" placeholder="Nome" />
-              <input ref={register} type="text" name="description" placeholder="Descrição" />
-              <input ref={register} type="text" name="brand" placeholder="Marca" />
-              <input ref={register} type="text" name="provider" placeholder="Fornecedor" />
-              <input ref={register} type="text" name="classification" placeholder="Classificação" />
-              <input ref={register} type="text" name="cost_price" placeholder="Preço de Custo" />
-              <input ref={register} type="text" name="sale_price" placeholder="Preço de Venda" />
-              <input ref={register} type="text" name="stock_quantity" placeholder="Quantidade em Estoque" />
-              <input ref={register} type="text" name="store_quantity" placeholder="Quantidade em Loja" />
-              <select ref={register} name="status" defaultValue="">
+              <input ref={register} type="text" name="name" placeholder="Nome" defaultValue={formInfo.name} />
+              <input ref={register} type="text" name="description" placeholder="Descrição" defaultValue={formInfo.description} />
+              <input ref={register} type="text" name="brand" placeholder="Marca" defaultValue={formInfo.brand} />
+              <input ref={register} type="text" name="provider" placeholder="Fornecedor" defaultValue={formInfo.provider} />
+              <input ref={register} type="text" name="classification" placeholder="Classificação" defaultValue={formInfo.classification} />
+              <input ref={register} type="text" name="cost_price" placeholder="Preço de Custo" defaultValue={formInfo.cost_price} />
+              <input ref={register} type="text" name="sale_price" placeholder="Preço de Venda" defaultValue={formInfo.sale_price} />
+              <input ref={register} type="text" name="stock_quantity" placeholder="Quantidade em Estoque" defaultValue={formInfo.stock_quantity} />
+              <input ref={register} type="text" name="store_quantity" placeholder="Quantidade em Loja" defaultValue={formInfo.store_quantity} />
+              <select ref={register} name="status" defaultValue={formInfo.status}>
                 <option value="" disabled>Selecione</option>
                 <option value="A">Ativo</option>
                 <option value="I">Suspenso</option>
               </select>
-              <button type="submit">Adicionar</button>
+              <button type="submit">
+                {typeof id !== 'undefined' ? 'Atualizar' : 'Adicionar'}
+              </button>
             </CustomForm>
           )}
       </Main>
