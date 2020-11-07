@@ -77,46 +77,20 @@ const SalesFormPage = () => {
   const submitForm = async (sale) => {
     const date = new Date().toISOString().substr(0, 10);
 
-    const formatedSale = [
-      {
+    const formatedSale = [];
+    for (let i = 1; i <= products.length; i++) {
+      formatedSale.push({
         order: lastOrder,
-        product_id: sale.product_1,
-        quantity: sale.quantity_1,
+        date,
         customer: {
           id: sale.customer,
         },
         seller: {
           id: sale.seller,
         },
-        date,
-      },
-    ];
-
-    if (sale.product_2 && sale.quantity_2 > 0) {
-      if (sale.product_1 === sale.product_2) {
-        Swal.fire({
-          title: 'Atenção!',
-          text: 'Selecione dois produtos diferentes do outro.',
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        });
-        return;
-      }
-
-      formatedSale.push(
-        {
-          order: lastOrder,
-          product_id: sale.product_2,
-          quantity: sale.quantity_2,
-          customer: {
-            id: sale.customer,
-          },
-          seller: {
-            id: sale.seller,
-          },
-          date,
-        },
-      );
+        product_id: sale[`product_${i}`],
+        quantity: sale[`quantity_${i}`],
+      });
     }
 
     setLoading(true);
