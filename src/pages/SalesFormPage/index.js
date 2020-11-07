@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import Swal from 'sweetalert2';
+import { AiOutlinePlusCircle } from 'react-icons/ai';
 
 import SidePanel from '../../components/SidePanel';
 import UserPanel from '../../components/UserPanel';
@@ -14,11 +15,33 @@ import Loading from '../../components/Loading';
 import { api } from '../../services/api';
 import { colors } from '../../styles/global';
 
+import { Title } from './styles';
+
+const Product = ({ index, register }) => {
+  return (
+    <>
+      <h3>Produto {index}</h3>
+      <SelectAPI forwardRef={register} type="text" apiName="products" name={`product_${index}`} placeholder="Produto" />
+      <input ref={register} type="number" name={`quantity_${index}`} placeholder="Quantidade" min={1} defaultValue={1} />
+    </>
+  )
+}
+
 const SalesFormPage = () => {
   const { register, handleSubmit } = useForm();
   const history = useHistory();
+
   const [lastOrder, setLastOrder] = useState();
   const [loading, setLoading] = useState(false);
+  const [products, setProducts] = useState([
+    <Product index={1} register={register} />
+  ]);
+
+  const addProduct = () => {
+    setProducts([...products,
+    <Product index={products.length + 1} register={register} />
+    ]);
+  }
 
   const fetchProducts = async () => {
     setLoading(true);
@@ -57,8 +80,8 @@ const SalesFormPage = () => {
     const formatedSale = [
       {
         order: lastOrder,
-        product_id: sale.product,
-        quantity: sale.quantity,
+        product_id: sale.product_1,
+        quantity: sale.quantity_1,
         customer: {
           id: sale.customer,
         },
@@ -70,7 +93,7 @@ const SalesFormPage = () => {
     ];
 
     if (sale.product_2 && sale.quantity_2 > 0) {
-      if (sale.product === sale.product_2) {
+      if (sale.product_1 === sale.product_2) {
         Swal.fire({
           title: 'Atenção!',
           text: 'Selecione dois produtos diferentes do outro.',
@@ -139,18 +162,26 @@ const SalesFormPage = () => {
   };
 
   const validateForm = async (sale) => {
+    const productsToCheck = [];
+    for (let i = 1; i <= products.length; i++) {
+      productsToCheck.push({
+        [`product_${i}`]: yup.string().required(),
+        [`quantity_${i}`]: yup.number().positive().integer().required(),
+      });
+    }
+
+    const productsToValidate = Object.assign({}, ...productsToCheck);
+
     const schema = yup.object().shape({
       customer: yup.string().required(),
       seller: yup.string().required(),
-      product: yup.string().required(),
-      quantity: yup.number().positive().integer().required(),
-      product_2: yup.string(),
-      quantity_2: yup.number().integer(),
+      ...productsToValidate
     });
 
     schema.validate(sale).then(async () => {
       await submitForm(sale);
     }).catch((err) => {
+      console.log(err);
       Swal.fire({
         title: 'Atenção!',
         text: 'Preencha todos os campos corretamente.',
@@ -174,17 +205,15 @@ const SalesFormPage = () => {
           <Loading />
         ) : (
             <CustomForm onSubmit={handleSubmit(validateForm)}>
-              <h2>Informações de Venda</h2>
+              <Title>
+                <h2>Informações de Venda</h2>
+                <AiOutlinePlusCircle onClick={addProduct} title="Adicionar produto" />
+              </Title>
+
               <SelectAPI forwardRef={register} type="text" apiName="partners" name="customer" filterType="customer" placeholder="Cliente" />
               <SelectAPI forwardRef={register} type="text" apiName="partners" name="seller" filterType="seller" placeholder="Vendedor" />
 
-              <h3>Produto 1</h3>
-              <SelectAPI forwardRef={register} type="text" apiName="products" name="product" placeholder="Produto" />
-              <input ref={register} type="number" name="quantity" placeholder="Quantidade" min={1} defaultValue={1} />
-
-              <h3>Produto 2</h3>
-              <SelectAPI forwardRef={register} type="text" apiName="products" name="product_2" placeholder="Produto" />
-              <input ref={register} type="number" name="quantity_2" placeholder="Quantidade" min={0} defaultValue={0} />
+              {products.map(product => product)}
 
               <button type="submit">Adicionar</button>
             </CustomForm>

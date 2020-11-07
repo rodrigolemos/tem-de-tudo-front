@@ -12,7 +12,7 @@ const CustomChart = ({ mainInfo, altInfo }) => {
 
   const config = {
     series: [{
-      name: 'Vendas',
+      name: 'Total Vendido',
       data: sales,
     }, {
       name: 'Lucro',

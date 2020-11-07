@@ -15,6 +15,7 @@ import { Filter, ReportsArea, SearchHelp } from './styles';
 
 const Dashboard = () => {
   const initialDate = new Date().toISOString().split('T')[0];
+
   const [starts, setStarts] = useState(initialDate);
   const [finishes, setFinishes] = useState(initialDate);
   const [fetch, setFetch] = useState(false);

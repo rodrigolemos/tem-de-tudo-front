@@ -9,7 +9,7 @@
 
 ### Dashboard
 
-- [ ] Index must fetch today's information
+- [x] Index must fetch today's information
 - [x] Sales and profit in the same chart
 
 ### Forms
