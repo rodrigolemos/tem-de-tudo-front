@@ -8,7 +8,6 @@ import UserPanel from '../../components/UserPanel';
 import Main from '../../components/Main';
 
 import SalesReport from '../../components/SalesReport';
-import ProfitReport from '../../components/ProfitReport';
 import TopSellers from '../../components/TopSellers';
 import TopCustomers from '../../components/TopCustomers';
 
@@ -69,25 +68,22 @@ const Dashboard = () => {
               <h1>Selecione uma data para consulta</h1>
             </SearchHelp>
           ) : (
-            <>
-              <div className="row">
-                <div className="col">
-                  <SalesReport starts={starts} finishes={finishes} />
+              <>
+                <div className="row">
+                  <div className="col col-full">
+                    <SalesReport starts={starts} finishes={finishes} />
+                  </div>
                 </div>
-                <div className="col">
-                  <ProfitReport starts={starts} finishes={finishes} />
+                <div className="row">
+                  <div className="col">
+                    <TopSellers starts={starts} finishes={finishes} />
+                  </div>
+                  <div className="col">
+                    <TopCustomers starts={starts} finishes={finishes} />
+                  </div>
                 </div>
-              </div>
-              <div className="row">
-                <div className="col">
-                  <TopSellers starts={starts} finishes={finishes} />
-                </div>
-                <div className="col">
-                  <TopCustomers starts={starts} finishes={finishes} />
-                </div>
-              </div>
-            </>
-          )}
+              </>
+            )}
         </ReportsArea>
       </Main>
     </div>

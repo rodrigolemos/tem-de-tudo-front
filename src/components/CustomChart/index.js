@@ -4,33 +4,35 @@ import ReactApexChart from 'react-apexcharts';
 import formatValue from '../../utils/formatValue';
 import formatDate from '../../utils/formatDate';
 
-const CustomChart = ({ info }) => {
-  const [values, axis] = [[], []];
+const CustomChart = ({ mainInfo, altInfo }) => {
 
-  info.map((day) => {
-    axis.push(formatDate(day.date));
-    values.push(day.total);
-    return true;
-  });
+  const axis = mainInfo.map(day => formatDate(day.date));
+  const sales = mainInfo.map(day => day.total);
+  const profit = altInfo.map(day => day.total);
 
   const config = {
     series: [{
       name: 'Vendas',
-      data: values,
+      data: sales,
+    }, {
+      name: 'Lucro',
+      data: profit,
     }],
     options: {
       chart: {
         height: 350,
         type: 'bar',
+        stacked: true
       },
       plotOptions: {
         bar: {
           dataLabels: {
-            position: 'top',
+            position: 'center',
           },
         },
       },
       dataLabels: {
+        position: 'center',
         enabled: true,
         formatter(val) {
           return formatValue(val);

@@ -77,6 +77,10 @@ export const ReportsArea = styled.div`
       width: 100%;
     }
   }
+
+  .col-full {
+    width: 100%;
+  }
 `;
 
 export const SearchHelp = styled.div`
