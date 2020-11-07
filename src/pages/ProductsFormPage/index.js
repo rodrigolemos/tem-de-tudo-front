@@ -165,7 +165,7 @@ const ProductsFormPage = () => {
               <select ref={register} name="status" defaultValue={formInfo.status}>
                 <option value="" disabled>Selecione</option>
                 <option value="A">Ativo</option>
-                <option value="I">Suspenso</option>
+                <option value="I">Inativo</option>
               </select>
               <button type="submit">
                 {typeof id !== 'undefined' ? 'Atualizar' : 'Adicionar'}

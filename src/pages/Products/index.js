@@ -100,7 +100,9 @@ const Products = () => {
       <Main>
         <div className="content-title">
           <h1>Produtos</h1>
-          <Link to="/product">Adicionar</Link>
+          {!loading && (
+            <Link to="/product">Adicionar</Link>
+          )}
         </div>
         {loading ? (
           <Loading />

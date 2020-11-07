@@ -14,8 +14,8 @@
 
 ### Forms
 
-- [ ] Create edit forms
-- [ ] Redesign CSS
+- [x] Create edit forms
+- [x] Redesign CSS
 - [ ] Input masks
 - [ ] Fix select loading message
 
@@ -27,7 +27,9 @@
 ### Performance/behavior
 
 - [ ] Store sales reports in local storage
+- [x] Disable buttons on loading
 
 ### Improvements
 
 - [ ] Login screen
+- [ ] Product image upload

@@ -99,7 +99,9 @@ const Partners = () => {
       <Main>
         <div className="content-title">
           <h1>Parceiros</h1>
-          <Link to="/partner">Adicionar</Link>
+          {!loading && (
+            <Link to="/partner">Adicionar</Link>
+          )}
         </div>
         {loading ? (
           <Loading />
