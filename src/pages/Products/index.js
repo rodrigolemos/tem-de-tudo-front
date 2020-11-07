@@ -24,9 +24,10 @@ import Loading from '../../components/Loading';
 
 import { api } from '../../services/api';
 import formatValue from '../../utils/formatValue';
+import formatStatus from '../../utils/formatStatus';
 import { colors } from '../../styles/global';
 
-import { QtdBadge } from './styles';
+import { QtdBadge, StatusBadge } from './styles';
 
 const StyledTable = withStyles((theme) => ({
   root: {
@@ -116,6 +117,7 @@ const Products = () => {
                       <TableCell>Custo</TableCell>
                       <TableCell>Venda</TableCell>
                       <TableCell>Qtd Estoque</TableCell>
+                      <TableCell>Status</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -141,6 +143,11 @@ const Products = () => {
                           <QtdBadge qtd={product.stock_quantity}>
                             {product.stock_quantity}
                           </QtdBadge>
+                        </TableCell>
+                        <TableCell>
+                          <StatusBadge status={product.status}>
+                            {formatStatus(product.status)}
+                          </StatusBadge>
                         </TableCell>
                       </StyledTableRow>
                     ))}
