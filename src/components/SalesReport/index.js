@@ -49,6 +49,8 @@ const SalesReport = ({ starts, finishes }) => {
               <div className="report-title">
                 <span>Total Vendido </span>
                 <span className="badge">{calcArrayTotal(sales)}</span>
+                <span>Lucro </span>
+                <span className="badge">{calcArrayTotal(profit)}</span>
               </div>
               <CustomChart title="Vendas por dia" mainInfo={sales} altInfo={profit} />
             </>

@@ -20,16 +20,14 @@ const CustomChart = ({ mainInfo, altInfo }) => {
     }],
     options: {
       chart: {
-        height: 350,
         type: 'bar',
-        stacked: true
-      },
-      plotOptions: {
-        bar: {
-          dataLabels: {
-            position: 'center',
-          },
+        height: 350,
+        toolbar: {
+          show: true
         },
+        zoom: {
+          enabled: true
+        }
       },
       dataLabels: {
         position: 'center',
@@ -43,51 +41,61 @@ const CustomChart = ({ mainInfo, altInfo }) => {
           fontFamily: 'Noto Sans TC',
           colors: ['#304758'],
         },
+        background: {
+          enabled: true,
+          padding: 5,
+          borderRadius: 2,
+          borderWidth: 0,
+        },
+      },
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          legend: {
+            position: 'bottom',
+            offsetX: -10,
+            offsetY: 0
+          }
+        }
+      }],
+      plotOptions: {
+        bar: {
+          horizontal: false,
+          dataLabels: {
+            position: 'top',
+          },
+        },
       },
       xaxis: {
         categories: axis,
-        // position: 'top',
-        labels: {
-          show: false,
-        },
-        axisBorder: {
-          show: false,
-        },
-        axisTicks: {
-          show: false,
-        },
-        crosshairs: {
-          fill: {
-            type: 'gradient',
-            gradient: {
-              colorFrom: '#D8E3F0',
-              colorTo: '#BED1E6',
-              stops: [0, 100],
-              opacityFrom: 0.4,
-              opacityTo: 0.5,
-            },
-          },
-        },
-        tooltip: {
-          enabled: true,
-        },
+        position: 'top',
+      },
+      legend: {
+        position: 'right',
+        offsetY: 40
+      },
+      fill: {
+        opacity: 1
       },
       yaxis: {
         axisBorder: {
           show: false,
         },
-        axisTicks: {
-          show: false,
-        },
         labels: {
           show: false,
         },
       },
-    },
+    }
   };
 
   return (
-    <ReactApexChart options={config.options} series={config.series} type="bar" style={{ width: '95%', height: '70%' }} />
+    <ReactApexChart
+      options={config.options}
+      series={config.series}
+      type="bar"
+      height="290px"
+      style={{ width: '95%' }}
+    />
   );
 };
 
