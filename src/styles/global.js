@@ -75,9 +75,9 @@ export default createGlobalStyle`
   }
 
   .content-title {
-    padding: .5rem 0 .5rem .5rem;
+    padding: .5rem;
     border-radius: 5px;
-    background-color: #FFF;
+    background-color: #FAFAFA;
     z-index: 2;
 
     width: 100%;

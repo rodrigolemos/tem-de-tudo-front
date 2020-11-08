@@ -19,8 +19,8 @@ export const Form = styled.form`
   
   padding: 2.5rem;
   padding-bottom: 3rem;
-  border-radius: 5px;
-  box-shadow: 0px 0px .7rem #DDD;
+  border-radius: 2px;
+  box-shadow: 0px 0px .5rem #CCC;
 
   display: flex;
   justify-content: center;

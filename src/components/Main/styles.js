@@ -9,7 +9,8 @@ export const Container = styled.main`
   position: relative;
   overflow-y: auto;
 
-  background: #FFF;
+  background: #FAFAFA;
+  /* background-color: #DDD; */
   color: var(--font-primary);
 
   @media only screen and (max-width: 960px)  {
@@ -24,8 +25,9 @@ export const Container = styled.main`
 
 export const ContentContainer = styled.div`
   height: auto;
-  width: 90%;
+  width: 100%;
   height: 100%;
+  padding: 3rem;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
