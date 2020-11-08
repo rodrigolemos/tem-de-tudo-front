@@ -16,6 +16,7 @@ import {
   Paper
 } from '@material-ui/core';
 
+import Dialog from '../../components/Dialog';
 import SidePanel from '../../components/SidePanel';
 import UserPanel from '../../components/UserPanel';
 import Main from '../../components/Main';
@@ -39,7 +40,6 @@ const StyledTable = withStyles((theme) => ({
     '& *': {
       fontSize: 15,
       textAlign: 'center',
-      // color: '#555'
     },
   }
 }))(Table);
@@ -112,6 +112,7 @@ const Products = () => {
                 <StyledTable aria-label="collapsible table">
                   <TableHead>
                     <TableRow>
+                      <TableCell>Detalhes</TableCell>
                       <TableCell>Editar</TableCell>
                       <TableCell>Produto</TableCell>
                       <TableCell>Marca</TableCell>
@@ -128,6 +129,9 @@ const Products = () => {
                       : products
                     ).map((product) => (
                       <StyledTableRow key={product.id}>
+                        <TableCell>
+                          <Dialog title="Detalhes" />
+                        </TableCell>
                         <TableCell className="center">
                           <Link to={`/product/${product.id}`}>
                             <FaEdit

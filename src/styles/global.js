@@ -205,6 +205,11 @@ export default createGlobalStyle`
     color: var(--bg-secondary-dark);
   }
 
+  .icon-info {
+    cursor: pointer;
+    color: var(--bg-primary-dark);
+  }
+
   .icon-remove {
     cursor: pointer;
     color: var(--danger);

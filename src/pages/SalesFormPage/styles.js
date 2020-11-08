@@ -7,7 +7,7 @@ export const Title = styled.div`
   width: 100%;
 
   svg {
-    font-size: 3rem;
+    font-size: 2.2rem;
     cursor: pointer;
   }
 `;

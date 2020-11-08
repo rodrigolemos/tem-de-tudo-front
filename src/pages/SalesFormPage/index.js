@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import Swal from 'sweetalert2';
-import { AiOutlinePlusCircle } from 'react-icons/ai';
+import { AiOutlinePlusCircle, AiOutlineMinusCircle } from 'react-icons/ai';
 
 import SidePanel from '../../components/SidePanel';
 import UserPanel from '../../components/UserPanel';
@@ -17,10 +17,25 @@ import { colors } from '../../styles/global';
 
 import { Title } from './styles';
 
-const Product = ({ index, register }) => {
+const Product = ({ index, register, products, setProducts }) => {
+
+  const remove = () => {
+    setProducts(products.map((product, i) => {
+      if (i !== index) {
+        return product;
+      }
+      return {};
+    }))
+  }
+
   return (
     <>
-      <h3>Produto {index}</h3>
+      <Title>
+        <h3>Produto {index}</h3>
+        {index > 1 && (
+          <AiOutlineMinusCircle onClick={remove} />
+        )}
+      </Title>
       <SelectAPI forwardRef={register} type="text" apiName="products" name={`product_${index}`} placeholder="Produto" />
       <input ref={register} type="number" name={`quantity_${index}`} placeholder="Quantidade" min={1} defaultValue={1} />
     </>
@@ -34,12 +49,18 @@ const SalesFormPage = () => {
   const [lastOrder, setLastOrder] = useState();
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([
-    <Product index={1} register={register} />
+    <Product key={1} index={1} register={register} />
   ]);
 
   const addProduct = () => {
     setProducts([...products,
-    <Product index={products.length + 1} register={register} />
+    <Product
+      key={products.length + 1}
+      index={products.length + 1}
+      register={register}
+      products={products}
+      setProducts={setProducts}
+    />
     ]);
   }
 

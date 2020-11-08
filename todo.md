@@ -15,7 +15,7 @@
 ### Forms
 
 - [x] Create edit forms
-- [x] Redesign CSS
+- [ ] Redesign CSS
 - [ ] Input masks
 - [x] Fix select loading message
 
@@ -33,4 +33,4 @@
 
 - [ ] Login screen
 - [ ] Product image upload
-- [ ] Sales - Add product
+- [x] Sales - add/remove product
