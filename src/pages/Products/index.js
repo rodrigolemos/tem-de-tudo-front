@@ -130,7 +130,7 @@ const Products = () => {
                     ).map((product) => (
                       <StyledTableRow key={product.id}>
                         <TableCell>
-                          <Dialog title="Detalhes" />
+                          <Dialog title="Detalhes" content={"Em desenvolvimento..."} />
                         </TableCell>
                         <TableCell className="center">
                           <Link to={`/product/${product.id}`}>

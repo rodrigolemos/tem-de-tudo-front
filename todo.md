@@ -26,7 +26,6 @@
 
 ### Performance/behavior
 
-- [ ] Store sales reports in local storage
 - [x] Disable buttons on loading
 
 ### Improvements
