@@ -144,19 +144,34 @@ const PartnersFormPage = () => {
         ) : (
             <CustomForm onSubmit={handleSubmit(validateForm)}>
               <h2>Informações do Parceiro</h2>
-              <input ref={register} type="text" name="name" placeholder="Nome do Parceiro" defaultValue={formInfo.name} />
-              <input ref={register} type="text" name="address" placeholder="Endereço" defaultValue={formInfo.address} />
-              <input ref={register} type="text" name="phone" placeholder="Telefone" defaultValue={formInfo.phone} />
-              <select ref={register} name="type" defaultValue={formInfo.type}>
-                <option value="" disabled>Selecione</option>
-                <option value="customer">Cliente</option>
-                <option value="seller">Vendedor</option>
-              </select>
-              <select ref={register} name="status" defaultValue={formInfo.status}>
-                <option value="" disabled>Selecione</option>
-                <option value="A">Ativo</option>
-                <option value="I">Inativo</option>
-              </select>
+              <label>
+                <span>Nome:</span>
+                <input ref={register} type="text" name="name" placeholder="Nome do Parceiro" defaultValue={formInfo.name} />
+              </label>
+              <label>
+                <span>Endereço:</span>
+                <input ref={register} type="text" name="address" placeholder="R. Dois, 123" defaultValue={formInfo.address} />
+              </label>
+              <label>
+                <span>Telefone:</span>
+                <input ref={register} type="text" name="phone" placeholder="(11)912345678" defaultValue={formInfo.phone} />
+              </label>
+              <label>
+                <span>Tipo:</span>
+                <select ref={register} name="type" defaultValue={formInfo.type}>
+                  <option value="" disabled>Selecione</option>
+                  <option value="customer">Cliente</option>
+                  <option value="seller">Vendedor</option>
+                </select>
+              </label>
+              <label>
+                <span>Status:</span>
+                <select ref={register} name="status" defaultValue={formInfo.status}>
+                  <option value="" disabled>Selecione</option>
+                  <option value="A">Ativo</option>
+                  <option value="I">Inativo</option>
+                </select>
+              </label>
               <button type="submit">
                 {typeof id !== 'undefined' ? 'Atualizar' : 'Adicionar'}
               </button>

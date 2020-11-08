@@ -14,7 +14,7 @@ export const Container = styled.div`
 
 export const Form = styled.form`
   background-color: #FFF;
-  width: 50%;
+  width: 55%;
   height: auto;
 
   display: flex;
@@ -24,6 +24,17 @@ export const Form = styled.form`
 
   @media only screen and (max-width: 1070px) {
     width: 75%;
+  }
+
+  label {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    span {
+      width: 25%;
+    }
   }
 
   input, select {

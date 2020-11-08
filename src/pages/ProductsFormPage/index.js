@@ -153,20 +153,51 @@ const ProductsFormPage = () => {
         ) : (
             <CustomForm onSubmit={handleSubmit(validateForm)}>
               <h2>Informações do Produto</h2>
-              <input ref={register} type="text" name="name" placeholder="Nome" defaultValue={formInfo.name} />
-              <input ref={register} type="text" name="description" placeholder="Descrição" defaultValue={formInfo.description} />
-              <input ref={register} type="text" name="brand" placeholder="Marca" defaultValue={formInfo.brand} />
-              <input ref={register} type="text" name="provider" placeholder="Fornecedor" defaultValue={formInfo.provider} />
-              <input ref={register} type="text" name="classification" placeholder="Classificação" defaultValue={formInfo.classification} />
-              <input ref={register} type="text" name="cost_price" placeholder="Preço de Custo" defaultValue={formInfo.cost_price} />
-              <input ref={register} type="text" name="sale_price" placeholder="Preço de Venda" defaultValue={formInfo.sale_price} />
-              <input ref={register} type="text" name="stock_quantity" placeholder="Quantidade em Estoque" defaultValue={formInfo.stock_quantity} />
-              <input ref={register} type="text" name="store_quantity" placeholder="Quantidade em Loja" defaultValue={formInfo.store_quantity} />
-              <select ref={register} name="status" defaultValue={formInfo.status}>
-                <option value="" disabled>Selecione</option>
-                <option value="A">Ativo</option>
-                <option value="I">Inativo</option>
-              </select>
+              <label>
+                <span>Nome:</span>
+                <input ref={register} type="text" name="name" placeholder="Nome" defaultValue={formInfo.name} />
+              </label>
+              <label>
+                <span>Descrição:</span>
+                <input ref={register} type="text" name="description" placeholder="Descrição" defaultValue={formInfo.description} />
+              </label>
+              <label>
+                <span>Marca:</span>
+                <input ref={register} type="text" name="brand" placeholder="Marca" defaultValue={formInfo.brand} />
+              </label>
+              <label>
+                <span>Fornecedor:</span>
+                <input ref={register} type="text" name="provider" placeholder="Fornecedor" defaultValue={formInfo.provider} />
+              </label>
+              <label>
+                <span>Classificação:</span>
+                <input ref={register} type="text" name="classification" placeholder="Classificação" defaultValue={formInfo.classification} />
+              </label>
+              <label>
+                <span>Custo:</span>
+                <input ref={register} type="text" name="cost_price" placeholder="Preço de Custo" defaultValue={formInfo.cost_price} />
+              </label>
+              <label>
+                <span>Venda:</span>
+                <input ref={register} type="text" name="sale_price" placeholder="Preço de Venda" defaultValue={formInfo.sale_price} />
+              </label>
+              <label>
+                <span>Estoque:</span>
+                <input ref={register} type="text" name="stock_quantity" placeholder="Quantidade em Estoque" defaultValue={formInfo.stock_quantity} />
+              </label>
+              <label>
+                <span>Loja:</span>
+                <input ref={register} type="text" name="store_quantity" placeholder="Quantidade em Loja" defaultValue={formInfo.store_quantity} />
+              </label>
+              <label>
+                <span>Status:</span>
+                <select ref={register} name="status" defaultValue={formInfo.status}>
+                  <option value="" disabled>Selecione</option>
+                  <option value="A">Ativo</option>
+                  <option value="I">Inativo</option>
+                </select>
+              </label>
+
               <button type="submit">
                 {typeof id !== 'undefined' ? 'Atualizar' : 'Adicionar'}
               </button>
