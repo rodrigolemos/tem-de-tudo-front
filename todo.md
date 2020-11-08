@@ -15,7 +15,7 @@
 ### Forms
 
 - [x] Create edit forms
-- [ ] Redesign CSS
+- [x] Redesign CSS
 - [ ] Input masks
 - [x] Fix select loading message
 

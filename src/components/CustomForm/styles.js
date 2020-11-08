@@ -3,7 +3,7 @@ import { showFromLeft } from '../../styles/animations';
 
 export const Container = styled.div`
   width: 100%;
-  height: 85%;
+  height: 90%;
   animation: ${showFromLeft} .3s ease-in-out;
 
   display: flex;
@@ -14,8 +14,13 @@ export const Container = styled.div`
 
 export const Form = styled.form`
   background-color: #FFF;
-  width: 55%;
+  width: 60%;
   height: auto;
+  
+  padding: 2.5rem;
+  padding-bottom: 3rem;
+  border-radius: 5px;
+  box-shadow: 0px 0px .7rem #DDD;
 
   display: flex;
   justify-content: center;

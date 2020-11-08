@@ -36,8 +36,14 @@ const Product = ({ index, register, products, setProducts }) => {
           <AiOutlineMinusCircle onClick={remove} />
         )}
       </Title>
-      <SelectAPI forwardRef={register} type="text" apiName="products" name={`product_${index}`} placeholder="Produto" />
-      <input ref={register} type="number" name={`quantity_${index}`} placeholder="Quantidade" min={1} defaultValue={1} />
+      <label>
+        <span>Produto:</span>
+        <SelectAPI forwardRef={register} type="text" apiName="products" name={`product_${index}`} placeholder="Produto" />
+      </label>
+      <label>
+        <span>Quantidade:</span>
+        <input ref={register} type="number" name={`quantity_${index}`} placeholder="Quantidade" min={1} defaultValue={1} />
+      </label>
     </>
   )
 }
@@ -204,9 +210,14 @@ const SalesFormPage = () => {
                 <h2>Informações de Venda</h2>
                 <AiOutlinePlusCircle onClick={addProduct} title="Adicionar produto" />
               </Title>
-
-              <SelectAPI forwardRef={register} type="text" apiName="partners" name="customer" filterType="customer" placeholder="Cliente" />
-              <SelectAPI forwardRef={register} type="text" apiName="partners" name="seller" filterType="seller" placeholder="Vendedor" />
+              <label>
+                <span>Cliente:</span>
+                <SelectAPI forwardRef={register} type="text" apiName="partners" name="customer" filterType="customer" placeholder="Cliente" />
+              </label>
+              <label>
+                <span>Vendedor:</span>
+                <SelectAPI forwardRef={register} type="text" apiName="partners" name="seller" filterType="seller" placeholder="Vendedor" />
+              </label>
 
               {products.map(product => product)}
 
