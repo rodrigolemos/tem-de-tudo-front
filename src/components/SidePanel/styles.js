@@ -18,7 +18,7 @@ export const Container = styled.aside`
 
     .bg-img {
       position: absolute;
-      top: 0px;
+      top: 0;
       right: -15rem;
       width: 40rem;
       height: 40rem;

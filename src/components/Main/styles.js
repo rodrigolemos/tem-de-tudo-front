@@ -10,7 +10,6 @@ export const Container = styled.main`
   overflow-y: auto;
 
   background: #FAFAFA;
-  /* background-color: #DDD; */
   color: var(--font-primary);
 
   @media only screen and (max-width: 960px)  {

@@ -78,7 +78,6 @@ export default createGlobalStyle`
     padding: .5rem;
     border-radius: 5px;
     background-color: #FAFAFA;
-    z-index: 2;
 
     width: 100%;
     display: flex;
