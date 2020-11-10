@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch } from 'react-router-dom';
 import Route from './Route';
 
+import Login from '../pages/Login';
 import Dashboard from '../pages/Dashboard';
 import Products from '../pages/Products';
 import Partners from '../pages/Partners';
@@ -13,6 +14,7 @@ import PartnersFormPage from '../pages/PartnersFormPage';
 const Routes = () => (
   <Switch>
     <Route exact path="/" component={Dashboard} />
+    <Route path="/login" component={Login} />
     <Route path="/products" component={Products} />
     <Route path="/partners" component={Partners} />
     <Route path="/sales/add" component={SalesFormPage} />
