@@ -37,6 +37,6 @@ Todas as informações são dinâmicas, ou seja, para cada valor inserido os cá
 ![Gestão de funcionários](https://github.com/rodrigolemos/tem-de-tudo-front/blob/main/public/front-3.png)
 
 
-# Autor
+## Autor
 
 Rodrigo Lemos
